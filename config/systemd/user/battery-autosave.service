@@ -1,0 +1,6 @@
+[Unit]
+Description=Enable power saver below 20% battery
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/waybar/scripts/battery-autosave.sh

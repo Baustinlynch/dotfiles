@@ -1,0 +1,6 @@
+#!/bin/sh
+# Wrapper to ensure Steam launched from Fuzzel has the X11 env it needs.
+# Use this if Fuzzel launches Steam without inheriting DISPLAY/XAUTHORITY.
+export DISPLAY="${DISPLAY:-:0}"
+export XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}"
+exec /usr/bin/steam "$@"

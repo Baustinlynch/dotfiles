@@ -1,0 +1,129 @@
+{
+    "telemetry.sqmId": "",
+    "telemetry.machineId": "00444e358ffb7379607a0aee97393615b7c26fb868865db7af210320b3efe410",
+    "telemetry.devDeviceId": "81af2da2-ed62-471f-ade0-e4f65223a43a",
+    "backupWorkspaces": {
+        "workspaces": [],
+        "folders": [
+            {
+                "folderUri": "file:///home/brenden/Documents/String-light-controller"
+            }
+        ],
+        "emptyWindows": []
+    },
+    "windowControlHeight": 35,
+    "profileAssociations": {
+        "workspaces": {
+            "file:///home/brenden/.config/waybar": "__default__profile__",
+            "file:///home/brenden/.config/niri": "__default__profile__",
+            "file:///home/brenden": "__default__profile__",
+            "file:///home/brenden/.config": "__default__profile__",
+            "file:///home/brenden/Documents/String-light-controller": "__default__profile__",
+            "file:///home/brenden/Documents/String-light-controller/PCB/18650/JST": "__default__profile__",
+            "file:///home/brenden/Documents/String-light-controller/PCB": "__default__profile__",
+            "file:///home/brenden/Documents/Traces": "__default__profile__"
+        },
+        "emptyWindows": {}
+    },
+    "windowsState": {
+        "lastActiveWindow": {
+            "folder": "file:///home/brenden/Documents/String-light-controller",
+            "backupPath": "/home/brenden/.config/Code - OSS/Backups/c923411c91b4f68f16d1db94fd01a15d",
+            "uiState": {
+                "mode": 1,
+                "x": 16,
+                "y": 10,
+                "width": 1900,
+                "height": 1028
+            }
+        },
+        "openedWindows": []
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#121314",
+    "windowSplash": {
+        "zoomLevel": 0,
+        "baseTheme": "vs-dark",
+        "colorInfo": {
+            "foreground": "#bfbfbf",
+            "background": "#121314",
+            "editorBackground": "#121314",
+            "titleBarBackground": "#191a1b",
+            "titleBarInactiveBackground": "#121314",
+            "titleBarBorder": "#2a2b2c",
+            "activityBarBackground": "#191a1b",
+            "activityBarBorder": "#2a2b2c",
+            "modernActivityBarBackground": "#191a1b",
+            "modernActivityBarInactiveBackground": "#191a1b",
+            "modernActivityBarBorder": "#252526",
+            "modernPanelBorder": "#2a2b2c",
+            "modernUIShellBackground": "#191a1b",
+            "modernUIInactiveShellBackground": "#121314",
+            "sideBarBackground": "#191a1b",
+            "sideBarBorder": "#2a2b2c",
+            "panelBackground": "#191a1b",
+            "editorGroupBorder": "rgba(255, 255, 255, 0.09)",
+            "editorBorder": "#2a2b2c",
+            "surfaceBackground": "#191a1b",
+            "surfaceBorder": "#2a2b2c",
+            "agentsPanelBackground": "#191a1b",
+            "agentsPanelBorder": "#2a2b2c",
+            "statusBarBackground": "#191a1b",
+            "statusBarInactiveBackground": "#121314",
+            "statusBarBorder": "#2a2b2c",
+            "statusBarNoFolderBackground": "#191a1b"
+        },
+        "layoutInfo": {
+            "sideBarSide": "left",
+            "editorPartMinWidth": 220,
+            "titleBarHeight": 35,
+            "activityBarWidth": 48,
+            "sideBarWidth": 198,
+            "auxiliaryBarWidth": 0,
+            "statusBarHeight": 22,
+            "windowBorder": false,
+            "modernUI": false,
+            "modernUICompact": false
+        }
+    },
+    "windowSplashWorkspaceOverride": {
+        "layoutInfo": {
+            "sideBarWidth": 198,
+            "auxiliaryBarWidth": 237,
+            "workspaces": {
+                "174c75a3c4c46ce08cad4a01f85d79dd": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": true
+                },
+                "547761ede93980822bbf2c5df5c6b54e": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "908f212a5c9a2f87dee78f64dca7c194": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "d490aefc8065ff21afea417d42c1f2ae": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "91adec5ae77c44fd0cbb33acc3986984": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": false
+                },
+                "0f947a33e0490ffc5a28dc7ebea7383a": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": true
+                },
+                "3763d408c9394d9632592f64e517774e": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": true
+                },
+                "79ca7eb5c28acf2e605625daaa737c39": {
+                    "sideBarVisible": true,
+                    "auxiliaryBarVisible": true
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+  // ───────── Power ─────────
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Power Menu",
+    "on-click": "~/.config/waybar/scripts/powermenu.sh",
+    "on-click-right": "systemctl suspend",
+    "on-click-middle": "sh -c 'niri msg action power-off-monitors && systemctl hibernate'",
+  }
+}
