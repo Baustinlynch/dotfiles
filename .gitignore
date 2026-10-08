@@ -1,0 +1,38 @@
+# Nix
+flake.lock
+result
+result-*
+*.drv
+
+# Home-manager
+home-manager-generations
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local overrides (optional)
+local.nix
+hardware.nix
+
+# Secrets (never commit)
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+age.key
+sops.yaml
+secrets.nix
+
+# Build
+/tmp/
+/var/tmp/
+*.log
