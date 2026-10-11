@@ -1,0 +1,1070 @@
+1789386996565	Sync.SyncScheduler	DEBUG	Next sync in 3600000 ms. (why=schedule)
+1789387299117	Sync.SyncScheduler	DEBUG	Network link status changed to "down". Offline?: false
+1789387299117	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1789387299118	Sync.SyncScheduler	DEBUG	Next sync in 3600000 ms. (why=schedule)
+1789387299119	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789396337485	Sync.SyncScheduler	DEBUG	Woke from sleep.
+1789396337490	Sync.SyncScheduler	DEBUG	Online, will sync in 2s.
+1789396337492	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789396341171	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789396341186	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789396342067	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789396344089	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789396346235	Sync.Engine.Tabs	INFO	update_local_state has 14 tab entries
+1789396346236	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1789396346236	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1789396346243	Sync.Engine.Tabs	INFO	prepare_for_upload found 14 tabs
+1789396346248	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1789396346248	FirefoxAccounts	DEBUG	getOAuthToken enter for scope 'profile'
+1789396346248	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1789396346248	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token with scope 'profile'
+1789396346248	Sync.SyncAuthManager	INFO	Getting sync key
+1789396346248	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1789396346249	FirefoxAccounts	DEBUG	getOAuthToken enter for scope 'https://identity.mozilla.com/apps/oldsync'
+1789396346249	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1789396346249	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token with scope 'https://identity.mozilla.com/apps/oldsync'
+1789396346249	Sync.SyncAuthManager	INFO	Getting a sync token from: https://token.services.mozilla.com/1.0/sync/1.5
+1789396346249	Sync.SyncAuthManager	DEBUG	Getting a token using OAuth
+1789396346249	Services.Common.TokenServerClient	DEBUG	Beginning OAuth token exchange: https://token.services.mozilla.com/1.0/sync/1.5
+1789396346249	Services.Common.RESTRequest	DEBUG	GET request to https://token.services.mozilla.com/1.0/sync/1.5
+1789396346251	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1789396346252	FirefoxAccounts	ERROR	Background refresh of profile failed: {"name":"FxAccountsProfileClientError","code":null,"errno":998,"error":"NETWORK_ERROR","message":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]"}
+1789396346253	Services.Common.RESTRequest	DEBUG	GET https://token.services.mozilla.com/1.0/sync/1.5 failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1789396346254	Sync.SyncAuthManager	ERROR	Non-authentication error in _fetchTokenForUser: TokenServerClientNetworkError({"error":{}})(resource://services-common/tokenserverclient.sys.mjs:28:36) JS Stack trace: TokenServerClientNetworkError@tokenserverclient.sys.mjs:51:16
+_tokenServerExchangeRequest@tokenserverclient.sys.mjs:235:13
+1789396346254	Sync.Status	DEBUG	Status.login: success.login => error.login.reason.network
+1789396346254	Sync.Status	DEBUG	Status.service: success.status_ok => error.login.failed
+1789396346254	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1789396346254	Sync.SyncAuthManager	ERROR	Failed to fetch a token for authentication: TokenServerClientNetworkError({"error":{}})(resource://services-common/tokenserverclient.sys.mjs:28:36) JS Stack trace: TokenServerClientNetworkError@tokenserverclient.sys.mjs:51:16
+_tokenServerExchangeRequest@tokenserverclient.sys.mjs:235:13
+1789396346254	Sync.Collection	DEBUG	POST Length: 6763
+1789396346255	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789396346255	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1789396346257	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/attached_clients
+1789396346258	Sync.Collection	WARN	POST request to https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/tabs failed: [Exception... "The lookup of the hostname failed"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "<unknown>"  data: no] No traceback available
+1789396346258	Sync.Engine.Tabs	WARN	quicksync sync failed: [Exception... "The lookup of the hostname failed"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "<unknown>"  data: no] No traceback available
+1789396346260	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/attached_clients failed: 2152398878 - NS_ERROR_UNKNOWN_HOST
+1789396346261	Hawk	WARN	hawk request error: [Exception... "NS_ERROR_UNKNOWN_HOST"  nsresult: "0x804b001e (NS_ERROR_UNKNOWN_HOST)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478"  data: no] Stack trace: onStopRequest()@resource://services-common/rest.sys.mjs:478
+1789396346261	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+request()@resource://services-common/hawkclient.sys.mjs:231
+1789396346261	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status text: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatusText]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get statusText :: line 630"  data: no] Stack trace: get statusText()@resource://services-common/rest.sys.mjs:630
+request()@resource://services-common/hawkclient.sys.mjs:239
+1789396346261	Hawk	DEBUG	(Response) /account/attached_clients: code: null - Status text: null
+1789396346261	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_maybeNotifyBackoff()@resource://services-common/hawkclient.sys.mjs:308
+request()@resource://services-common/hawkclient.sys.mjs:247
+1789396346261	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_maybeNotifyBackoff()@resource://services-common/hawkclient.sys.mjs:308
+request()@resource://services-common/hawkclient.sys.mjs:248
+1789396346261	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status text: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatusText]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get statusText :: line 630"  data: no] Stack trace: get statusText()@resource://services-common/rest.sys.mjs:630
+_constructError()@resource://services-common/hawkclient.sys.mjs:113
+request()@resource://services-common/hawkclient.sys.mjs:253
+1789396346261	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+_constructError()@resource://services-common/hawkclient.sys.mjs:114
+request()@resource://services-common/hawkclient.sys.mjs:253
+1789396346261	Services.Common.RESTResponse	DEBUG	Caught exception fetching HTTP status code: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.responseStatus]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get status :: line 615"  data: no] Stack trace: get status()@resource://services-common/rest.sys.mjs:615
+_constructError()@resource://services-common/hawkclient.sys.mjs:115
+request()@resource://services-common/hawkclient.sys.mjs:253
+1789396346261	Services.Common.RESTResponse	DEBUG	Caught exception processing response headers: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsIHttpChannel.visitResponseHeaders]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: resource://services-common/rest.sys.mjs :: get headers :: line 662"  data: no] Stack trace: get headers()@resource://services-common/rest.sys.mjs:662
+_constructError()@resource://services-common/hawkclient.sys.mjs:121
+request()@resource://services-common/hawkclient.sys.mjs:253
+1789396346262	FirefoxAccounts	ERROR	error GETing /account/attached_clients: {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1789396346262	FirefoxAccounts	ERROR	Could not update attached clients list : {"error":{},"errorString":"[Exception... \"NS_ERROR_UNKNOWN_HOST\"  nsresult: \"0x804b001e (NS_ERROR_UNKNOWN_HOST)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]","message":null,"code":null,"errno":null}
+1789396346660	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789396346866	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789396351513	Sync.RemoteTabs	INFO	Generating tab list with filter
+1789396351515	Sync.RemoteTabs	DEBUG	Processing client: {"id":"E_p9jIYiTUAj","type":"client","name":"brend’s Zen on DESKTOP-02PDNSH","clientType":"desktop","lastModified":1789386962380,"tabs":[]}
+1789396351516	Sync.RemoteTabs	DEBUG	Processing client: {"id":"de0af367628c71493d623ae6e9769749","type":"client","name":"Firefox on samsung SM-A528B","clientType":"phone","lastModified":1789279733570,"tabs":[]}
+1789396351516	Sync.RemoteTabs	INFO	Final tab list has 2 clients with 7 tabs.
+1789396351669	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789396352286	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789396352298	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789396352417	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789396357379	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789396357889	Sync.SyncScheduler	DEBUG	Network link status changed to "up". Offline?: false
+1789396357889	Sync.SyncScheduler	DEBUG	Network link looks up. Syncing.
+1789396357892	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789396359471	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789397383909	Sync.SyncScheduler	DEBUG	Going to sleep, doing a quick sync.
+1789397384913	Sync.SyncScheduler	DEBUG	Network link status changed to "down". Offline?: false
+1789397384913	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1789397384914	Sync.SyncScheduler	DEBUG	Next sync in 3600000 ms. (why=schedule)
+1789397384918	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789407928364	Sync.SyncScheduler	DEBUG	Woke from sleep.
+1789407928405	Sync.SyncScheduler	DEBUG	Online, will sync in 2s.
+1789407928405	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789407944723	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789407946221	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789407949217	Sync.SyncScheduler	DEBUG	Network link status changed to "up". Offline?: false
+1789407949218	Sync.SyncScheduler	DEBUG	Network link looks up. Syncing.
+1789407949222	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789408332769	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408332779	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408333002	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408333196	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408333298	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408333303	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408333858	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408334018	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408336262	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408336270	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408336407	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408336571	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408336601	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408336605	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408337197	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408337266	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408337314	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408337732	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408337813	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408338517	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408339667	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408341398	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408341915	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408343518	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408344225	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408344231	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408349290	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408353122	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408353127	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408358127	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408420446	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408420454	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408420880	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408421036	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408421057	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408421062	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408421697	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408421743	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408423885	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408425446	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408425670	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408425874	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408430822	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408451240	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408451247	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408456241	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408578645	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408578654	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408578867	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408579098	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408579129	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408579133	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408579881	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408580025	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408581948	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408582783	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408583649	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408588873	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408589112	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408589695	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408589726	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408593639	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408593800	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408593883	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408619138	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408624150	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408635610	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408635620	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408635831	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408636061	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408636075	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408636080	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408636606	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408636648	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408640611	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408641133	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408645102	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408646134	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408646268	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408646660	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408647013	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408649534	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408649538	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408650696	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408651320	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408651698	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408653696	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408656461	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408656778	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408657055	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408662091	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408663324	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408668457	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408683636	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408688691	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408698836	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408698844	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408699743	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408703837	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408712553	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408712559	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408717594	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408720471	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408720486	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408720673	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408720739	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408721405	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408723676	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408723708	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408724365	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408725529	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408731949	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408733076	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408736109	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408737019	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408738074	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408740890	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408743123	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408766818	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408771825	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408777735	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408779815	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408783120	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408805069	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408810071	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408814475	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408814479	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408819475	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408891821	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408892024	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408892200	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408892862	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408892866	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408893042	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408895286	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408895289	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408896828	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408896958	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408896961	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408897218	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408901968	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408902676	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408902684	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408902927	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408907824	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408914004	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408914222	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408915891	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408919014	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408933745	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408938746	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408943956	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408948996	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408950528	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408955529	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408964383	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408967291	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408967300	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408967586	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408969385	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408981156	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789408982964	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408983115	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408983852	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408983914	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408984694	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408986205	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789408986282	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789408997076	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409000628	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409000636	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409000758	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409002082	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409004201	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409009106	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409009251	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409027096	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409032096	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409035969	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409037797	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409040900	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409040983	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409064964	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409065938	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409069964	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409075132	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409080132	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409083682	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409085035	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409086832	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409088683	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409192866	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409192876	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409193158	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409193324	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409193345	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409193348	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409194054	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409194183	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409194746	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409194875	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409196584	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409197867	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409215112	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409215432	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409215442	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409220437	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409229472	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409229739	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409234473	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409236428	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409241531	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409243611	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409243896	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409243899	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409247595	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409247808	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409248611	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409253130	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409258131	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409269023	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409269032	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409269246	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409269409	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409269423	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409269426	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409270481	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409270577	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409274255	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409276568	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409276886	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409281583	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409286300	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409288414	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409290118	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409291724	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409295541	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409300549	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409301197	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409303177	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409306446	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409325744	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409325750	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409327038	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409330784	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409335818	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409335824	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409337179	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409340874	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409358361	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409363478	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409366470	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409368315	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409371808	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409383196	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409388664	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409389910	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409389919	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409390097	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409395071	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409411451	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409412771	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409416444	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409416472	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409417158	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409417926	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409418594	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409422174	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409455424	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409455433	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409455646	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409455813	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409455826	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409455829	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409456630	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409456671	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409460474	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409499463	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409499468	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409504463	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409513349	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1789409513349	FirefoxAccounts	DEBUG	getOAuthToken enter for scope 'profile'
+1789409513349	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1789409513349	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token with scope 'profile'
+1789409513350	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1789409513600	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1789409528213	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409528222	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409528837	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409529285	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409532537	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409533216	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409551311	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409551320	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409551549	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409551715	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409551737	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409551740	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409552504	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409552532	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409556377	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409561642	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409561649	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409566645	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409569514	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409569523	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409569692	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409569859	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409569875	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409569880	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409570449	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409570463	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409573620	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409573788	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409574521	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409580770	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409580775	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409585775	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409644201	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409644210	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409644428	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409644601	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409644614	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409644617	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409645326	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409645667	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409649231	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409664350	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409664486	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409664496	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409664502	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409665192	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409665234	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409666812	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409666935	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409669458	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409675046	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409680191	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409771006	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409776065	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409924852	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409924861	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409925092	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409925256	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409925271	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409925274	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409926141	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409926260	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409929853	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409933906	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409935210	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409936271	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409939180	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789409964140	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789409964148	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409964368	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409964528	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409964541	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409964546	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409965318	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409965341	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789409969177	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410129915	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410130386	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410130886	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410131077	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410131085	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410134917	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410141100	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410141104	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410146101	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410204468	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410205708	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410209980	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410217811	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410218126	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410218131	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410220059	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410220062	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410223188	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410239423	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410239430	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410239625	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410239784	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410239800	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410239802	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410240450	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410240478	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410244859	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410246753	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410248850	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410249273	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410251822	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410259248	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410264450	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410301283	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410304858	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410306330	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410306759	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410311515	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410311780	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410340822	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410344510	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410345826	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410369075	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789410370586	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789410377351	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410380593	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410382408	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410382905	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410387905	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410420861	Sync.SyncScheduler	DEBUG	Network link status changed to "changed". Offline?: false
+1789410451855	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410451865	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410451913	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410452043	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1789410452043	FirefoxAccounts	DEBUG	getOAuthToken enter for scope 'profile'
+1789410452043	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1789410452043	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token with scope 'profile'
+1789410452043	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1789410452066	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410452897	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1789410456041	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410456043	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410456877	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410462339	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410462342	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410462366	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410462642	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410462780	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410464181	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410465903	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410465905	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410467340	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410498606	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410503675	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410504715	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410509740	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410586448	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410591489	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410601444	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410606445	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410701299	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410701309	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410702264	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410702421	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410702450	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410702454	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410703730	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410703734	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410706360	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410731448	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410731452	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410736448	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410786787	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410786796	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410787898	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410788068	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410788079	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410788082	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410789704	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410789727	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410791841	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410809117	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410809126	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410809147	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410810236	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410812540	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410812543	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410813340	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410814201	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410885827	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410886181	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410886186	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410890828	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789410915612	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789410915620	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410916311	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410916476	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410916495	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410916498	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410917099	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789410920871	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411021775	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411025191	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411025202	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411025235	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411025374	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1789411025374	FirefoxAccounts	DEBUG	getOAuthToken enter for scope 'profile'
+1789411025374	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1789411025374	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token with scope 'profile'
+1789411025374	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1789411025376	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile failed: 2152398920 - NS_ERROR_PROXY_CONNECTION_REFUSED
+1789411025376	FirefoxAccounts	ERROR	Background refresh of profile failed: {"name":"FxAccountsProfileClientError","code":null,"errno":998,"error":"NETWORK_ERROR","message":"[Exception... \"NS_ERROR_PROXY_CONNECTION_REFUSED\"  nsresult: \"0x804b0048 (NS_ERROR_PROXY_CONNECTION_REFUSED)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]"}
+1789411025376	FirefoxAccounts	ERROR	Background refresh of profile failed: {"name":"FxAccountsProfileClientError","code":null,"errno":998,"error":"NETWORK_ERROR","message":"[Exception... \"NS_ERROR_PROXY_CONNECTION_REFUSED\"  nsresult: \"0x804b0048 (NS_ERROR_PROXY_CONNECTION_REFUSED)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]"}
+1789411025376	FirefoxAccounts	ERROR	Background refresh of profile failed: {"name":"FxAccountsProfileClientError","code":null,"errno":998,"error":"NETWORK_ERROR","message":"[Exception... \"NS_ERROR_PROXY_CONNECTION_REFUSED\"  nsresult: \"0x804b0048 (NS_ERROR_PROXY_CONNECTION_REFUSED)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]"}
+1789411025376	FirefoxAccounts	ERROR	Background refresh of profile failed: {"name":"FxAccountsProfileClientError","code":null,"errno":998,"error":"NETWORK_ERROR","message":"[Exception... \"NS_ERROR_PROXY_CONNECTION_REFUSED\"  nsresult: \"0x804b0048 (NS_ERROR_PROXY_CONNECTION_REFUSED)\"  location: \"JS frame :: resource://services-common/rest.sys.mjs :: onStopRequest :: line 478\"  data: no]"}
+1789411025395	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411026776	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411027491	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411027493	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411030067	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411030070	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411032516	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411039295	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411041351	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411042138	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411042393	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411043869	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411043989	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411044010	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411044015	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411044297	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411044674	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411044950	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411045806	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411046735	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411047108	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411049674	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411049979	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411050542	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411051631	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411052451	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411052455	Sync.Engine.History.Tracker	WARN	Attempted to add undefined ID to tracker
+1789411054081	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411054083	Sync.Engine.History.Tracker	WARN	Attempted to add undefined ID to tracker
+1789411055007	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411055626	Sync.Engine.History.Tracker	WARN	Attempted to add undefined ID to tracker
+1789411055628	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411060645	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411061860	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411066860	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411080071	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411080534	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411081009	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411081442	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411081444	Sync.Engine.History.Tracker	WARN	Attempted to add undefined ID to tracker
+1789411082078	Sync.Engine.History.Tracker	WARN	Attempted to add undefined ID to tracker
+1789411082081	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411082564	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411082570	Sync.Engine.History.Tracker	WARN	Attempted to add undefined ID to tracker
+1789411084942	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411085136	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411086616	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411090371	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411091616	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411118213	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411119269	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411119696	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411121535	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411121989	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411123224	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411123623	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411124538	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411128665	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411134736	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411135911	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411136894	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411137973	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411138676	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411139749	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411141673	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411143737	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411144660	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411146726	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411156672	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411161674	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411177886	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411182955	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411183972	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411185662	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411186671	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411187788	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411188972	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411189864	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411191210	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411194887	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411195030	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411196272	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411198206	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411200097	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411202901	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411203435	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411204259	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411207935	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411210620	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411210723	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411211881	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411212882	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411214425	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411215259	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411215661	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411226875	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411226884	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411227519	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411227976	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411231267	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411231885	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411232228	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411233177	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411233982	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411234822	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411235242	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411235592	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411237106	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411237230	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411237992	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411238865	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411239234	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411240692	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411241295	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411241622	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411242428	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411242995	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411243141	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411243398	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411245067	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411246661	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411247910	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411248162	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411249767	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411251396	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411251962	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411253961	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411254767	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411256692	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411261419	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411261705	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411263495	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411264544	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411265674	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411267632	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411268507	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411268835	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411269378	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411270413	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411272639	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411273582	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411273843	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411274500	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411275408	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411276557	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411278026	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411278765	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411279578	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411280801	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411281760	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411283558	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411284499	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411285614	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411285808	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411287846	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411291600	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411292697	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411292926	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411294112	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411294976	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411296459	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411297756	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411299168	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411302178	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411307192	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411311628	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411314136	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411315005	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411315758	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411316708	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411317283	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411318603	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411319033	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411319552	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411320754	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411321533	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411322001	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411322386	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411322990	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411323332	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411323703	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411328026	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411332199	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411333385	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411335565	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411337200	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411339808	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411340278	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411342496	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411343922	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411344882	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411345381	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411346424	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411347295	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411348452	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411349135	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411350417	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411350725	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411351702	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411352517	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411353583	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411355002	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411355794	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411364222	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411364672	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411365224	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411365744	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411366790	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411367232	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411367492	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411368432	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411369223	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411375106	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411377481	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411377900	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411378873	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411380118	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411380859	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411382075	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411383007	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411384208	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411385865	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411385905	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411387428	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411392438	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411395325	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411396257	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411400382	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411411772	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411413521	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411415434	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411416610	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411416780	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411417639	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411419134	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411420191	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411422281	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411422639	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411423131	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411423817	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411424593	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411426294	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411427051	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411427517	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411428137	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411428141	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411429451	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411430344	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411430768	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411431521	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411431858	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411433221	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411434234	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411434878	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411435747	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411436120	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411436537	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411436854	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411437458	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411439235	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411440845	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411442155	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411443289	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411445765	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411445878	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411447007	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411450007	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411450714	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411452020	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411452576	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411453500	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411454438	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411455040	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411455433	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411455902	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411457285	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411457625	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411458466	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411458943	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411463531	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411478477	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411478881	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411482448	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411482860	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411483479	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411490091	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411491164	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411491569	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411494179	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411494988	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411495136	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411496425	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411498332	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411501474	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411502693	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411505406	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411506870	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411507749	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411507966	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411509087	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411512968	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411512998	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change: scheduling a quick-write in 5000ms
+1789411513762	Sync.Engine.Tabs.Tracker	DEBUG	Detected a tab change, but a quick-write is already scheduled
+1789411518030	Sync.Engine.Tabs	INFO	Can't do a quick-sync due to the service status: <Status: login: error.login.reason.network, service: error.login.failed, sync: success.sync>
+1789411518330	Sync.Service	DEBUG	User-Agent: Zen/1.22.1b (Linux x86_64) FxSync/1.157.0.20260911034930.desktop
+1789411518330	Sync.Service	INFO	Starting sync at 2026-09-14 19:45:18 in browser session dh_NNMzw9cyE
+1789411518333	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1789411518333	Sync.Status	INFO	Resetting Status.
+1789411518333	Sync.Status	DEBUG	Status.service: error.login.failed => success.status_ok
+1789411518334	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1789411518334	FirefoxAccounts	DEBUG	getOAuthToken enter for scope 'profile'
+1789411518334	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1789411518334	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token with scope 'profile'
+1789411518334	Sync.SyncAuthManager	INFO	Getting sync key
+1789411518334	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1789411518335	FirefoxAccounts	DEBUG	getOAuthToken enter for scope 'https://identity.mozilla.com/apps/oldsync'
+1789411518335	FirefoxAccounts	DEBUG	getCachedToken returning null for expired token
+1789411518335	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/attached_clients
+1789411518338	Services.Common.RESTRequest	DEBUG	POST request to https://api.accounts.firefox.com/v1/oauth/token
+1789411518338	Services.Common.RESTRequest	DEBUG	POST Length: 127
+1789411518584	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1789411518602	Services.Common.RESTRequest	DEBUG	POST https://api.accounts.firefox.com/v1/oauth/token 200
+1789411518602	Hawk	DEBUG	(Response) /oauth/token: code: 200 - Status text: 
+1789411518602	Hawk	DEBUG	Clock offset vs https://api.accounts.firefox.com/v1: -602
+1789411518602	FirefoxAccounts	DEBUG	getCachedToken returning null for expired token
+1789411518602	FirefoxAccounts	DEBUG	_updateAccountData with items: ["oauthTokens"]
+1789411518602	FirefoxAccounts	DEBUG	writing plain storage: ["email","sessionToken","uid","verified","device","encryptedSendTabKeys","encryptedCloseTabKeys","oauthTokens","profileCache"]
+1789411518602	FirefoxAccounts	TRACE	starting write of json user data: ["email","sessionToken","uid","verified","device","encryptedSendTabKeys","encryptedCloseTabKeys","oauthTokens","profileCache"]
+1789411518602	Sync.SyncAuthManager	INFO	Getting a sync token from: https://token.services.mozilla.com/1.0/sync/1.5
+1789411518602	Sync.SyncAuthManager	DEBUG	Getting a token using OAuth
+1789411518602	Services.Common.TokenServerClient	DEBUG	Beginning OAuth token exchange: https://token.services.mozilla.com/1.0/sync/1.5
+1789411518602	Services.Common.RESTRequest	DEBUG	GET request to https://token.services.mozilla.com/1.0/sync/1.5
+1789411518606	FirefoxAccounts	TRACE	finished write of json user data - took: 3
+1789411518606	FirefoxAccounts	DEBUG	writing secure storage: ["scopedKeys"]
+1789411518606	FirefoxAccounts	TRACE	starting write of user data to the login manager
+1789411518610	FirefoxAccounts	TRACE	finished write of user data to the login manager
+1789411518614	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/attached_clients 200
+1789411518614	Hawk	DEBUG	(Response) /account/attached_clients: code: 200 - Status text: 
+1789411518614	Hawk	DEBUG	Clock offset vs https://api.accounts.firefox.com/v1: -614
+1789411518858	Services.Common.RESTRequest	DEBUG	GET https://token.services.mozilla.com/1.0/sync/1.5 200
+1789411518858	Services.Common.TokenServerClient	DEBUG	Got token response: 200
+1789411518858	Services.Common.TokenServerClient	DEBUG	Successful token response
+1789411518858	Sync.Status	DEBUG	Status.login: success.login => success.login
+1789411518858	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1789411518858	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1789411518859	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411518859	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1789411519189	Sync.Resource	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/info/collections
+1789411519190	Sync.Service	DEBUG	Fetching server configuration: https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/info/configuration
+1789411519190	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411519390	Sync.Resource	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/info/configuration
+1789411519390	Sync.Service	DEBUG	Fetching global metadata record
+1789411519390	Sync.Service	DEBUG	Weave Version: 1.157.0 Local Storage: 5 Remote Storage: 5
+1789411519390	Sync.Service	DEBUG	Fetching and verifying -- or generating -- symmetric keys.
+1789411519390	Sync.Service	INFO	Testing info/collections: {"bookmarks":1789279734.07,"prefs":1788980318.5,"passwords":1788980291.05,"meta":1788975014.77,"addresses":1788980293.36,"history":1789394239.04,"tabs":1789394238.82,"crypto":1788974992.02,"addons":1789019498.62,"clients":1789374968.36,"extension-storage":1789391833.67}
+1789411519390	Sync.CollectionKeyManager	INFO	Testing for updateNeeded. Last modified: 1788974992.02
+1789411519390	Sync.Synchronizer	DEBUG	Refreshing client list.
+1789411519390	Sync.Engine.Clients	DEBUG	Resetting clients last sync time
+1789411519391	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411519578	Sync.Collection	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/clients?full=1&limit=1000
+1789411519581	Sync.Engine.Clients	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 3 reconciled.
+1789411519581	FirefoxAccounts	INFO	fetching updated device list
+1789411519581	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/devices?filterIdleDevicesTimestamp=1787597119581
+1789411519918	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/devices?filterIdleDevicesTimestamp=1787597119581 200
+1789411519918	Hawk	DEBUG	(Response) /account/devices?filterIdleDevicesTimestamp=1787597119581: code: 200 - Status text: 
+1789411519918	Hawk	DEBUG	Clock offset vs https://api.accounts.firefox.com/v1: -918
+1789411519918	FirefoxAccounts	INFO	Got new device list: 6962a0ff37a6ecbfea19e21fb53256ef, ac0b22ee5db88081ebd2dd6e4861fd4a, de0af367628c71493d623ae6e9769749
+1789411519919	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1789411519919	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1789411519919	FirefoxAccounts	TRACE	Our push subscription looks OK
+1789411519919	FirefoxAccounts	INFO	updating the cache
+1789411519919	Sync.Engine.Clients	DEBUG	Refreshing the known stale clients list
+1789411519919	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1789411519919	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1789411519920	Sync.Engine.Clients	INFO	Uploading 0 outgoing records
+1789411519921	Sync.Synchronizer	INFO	Updating enabled engines: 3 clients.
+1789411519922	Sync.Synchronizer	INFO	Syncing all enabled engines.
+1789411519923	Sync.Engine.Prefs	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411519923	Sync.Engine.Prefs	INFO	Uploading 0 outgoing records
+1789411519941	Sync.Engine.Passwords	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411519942	Sync.Engine.Passwords	INFO	Uploading 0 outgoing records
+1789411519948	Sync.Engine.Tabs	INFO	update_local_state has 18 tab entries
+1789411519948	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/open-uri
+1789411519948	FirefoxAccounts	TRACE	Getting command keys: https://identity.mozilla.com/cmd/close-uri/v1
+1789411519954	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411520134	Sync.Collection	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/tabs?newer=1789386996.42&full=1&limit=1000
+1789411520137	Sync.Engine.Tabs	INFO	inserting tab for device E_p9jIYiTUAj, last modified at 1789394238820
+1789411520143	Sync.Engine.Tabs	INFO	removed 0 stale clients (threshold was 1773834996420)
+1789411520143	Sync.Engine.Tabs	INFO	deleted 0 pending tab closures because they were not in the new tabs
+1789411520143	Sync.Engine.Tabs	INFO	deleted 0 records because they timed out
+1789411520144	Sync.Engine.Tabs	DEBUG	Updating last sync to 1789394238.82
+1789411520149	Sync.Engine.Tabs	INFO	Records: 1 applied, 1 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411520149	Sync.Engine.Tabs	INFO	prepare_for_upload found 18 tabs
+1789411520149	Sync.Engine.Tabs	INFO	Uploading 1 outgoing records
+1789411520151	Sync.Engine.Tabs	INFO	Posting 1 records of 8279 bytes with batch=true
+1789411520151	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411520151	Sync.Collection	DEBUG	POST Length: 8279
+1789411520343	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/tabs?batch=true&commit=true
+1789411520344	Sync.Engine.Tabs	INFO	sync uploaded 1 records
+1789411520344	Sync.Engine.Tabs	DEBUG	Updating last sync to 1789411520.24
+1789411520351	Sync.Engine.Tabs	DEBUG	Updating last sync to 1789411520.24
+1789411520356	Sync.Engine.Bookmarks	DEBUG	Checking if server sync ID V2kI4HWCI1od matches existing
+1789411520357	Sync.Engine.Bookmarks	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411520357	Sync.Engine.Bookmarks.Mirror	DEBUG	Merging bookmarks in Rust
+1789411520361	Sync.Engine.Bookmarks.Mirror	DEBUG	Merging bookmarks in Rust took 3.244ms
+1789411520361	Sync.Engine.Bookmarks.Mirror	DEBUG	No changes detected in both mirror and Places
+1789411520361	Sync.Engine.Bookmarks	INFO	Uploading 0 outgoing records
+1789411520362	Sync.Engine.Bookmarks.BookmarkSyncUtils	DEBUG	pushChanges: Processed change records: {"weak":0,"skipped":0,"updated":0}
+1789411520362	Sync.Engine.Addons	DEBUG	Refreshing reconciler state
+1789411520362	Sync.AddonsReconciler	INFO	Refreshing global state from AddonManager.
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Perplexity Search Engine (version=1.0.0, id=perplexity@diril.org)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon SponsorBlock for YouTube - Skip Sponsorships (version=6.1.7, id=sponsorBlocker@ajay.app)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Proton Pass: Free Password Manager (version=1.38.0, id=78272b6fa58f4a1abaac99321d503a20@proton.me)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon uBlock Origin (version=1.74.0, id=uBlock0@raymondhill.net)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Color Picker - Modern & Sleek (version=1.2, id=colorpicker@randomstring.com)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Image extract (version=2.4.4, id={6381b0dc-8bef-47d0-8c31-6fffbdd8ec7f})
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Form Autofill (version=1.0.1, id=formautofill@mozilla.org)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon IPP Activator (version=0.3, id=ipp-activator@mozilla.com)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon New Tab (version=155.2.0, id=newtab@mozilla.org)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Picture-In-Picture (version=1.0.0, id=pictureinpicture@mozilla.org)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Add-ons Search Detection (version=3.0.0, id=addons-search-detection@mozilla.com)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Web Compatibility Interventions (version=155.5.0, id=webcompat@mozilla.org)
+1789411520363	Sync.AddonsReconciler	DEBUG	Rectifying state for addon System theme — auto (version=1.4.2, id=default-theme@mozilla.org)
+1789411520364	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Light (version=1.3.4, id=firefox-compact-light@mozilla.org)
+1789411520364	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Dark (version=1.3.4, id=firefox-compact-dark@mozilla.org)
+1789411520364	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Firefox Alpenglow (version=1.5.3, id=firefox-alpenglow@mozilla.org)
+1789411520364	Sync.AddonsReconciler	DEBUG	Rectifying state for addon OpenH264 Video Codec provided by Cisco Systems, Inc. (version=2.6.0, id=gmp-gmpopenh264)
+1789411520364	Sync.AddonsReconciler	DEBUG	Rectifying state for addon Widevine Content Decryption Module provided by Google Inc. (version=4.10.3050.0, id=gmp-widevinecdm)
+1789411520364	Sync.AddonsReconciler	INFO	Saving reconciler state to file: addonsreconciler
+1789411520366	Sync.Engine.Addons	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411520366	Sync.Engine.Addons	INFO	Uploading 0 outgoing records
+1789411520367	Sync.Engine.Addresses	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411520367	Sync.Engine.Addresses	INFO	Uploading 0 outgoing records
+1789411520367	Sync.Engine.CreditCards	DEBUG	First sync, uploading all items
+1789411520367	Sync.Engine.CreditCards	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411520367	Sync.Engine.CreditCards	INFO	Uploading 0 outgoing records
+1789411520367	Sync.Engine.Forms	DEBUG	First sync, uploading all items
+1789411520368	Sync.Engine.Forms	INFO	Records: 0 applied, 0 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411520368	Sync.Engine.Forms	INFO	Uploading 0 outgoing records
+1789411520368	Sync.Engine.History	DEBUG	Checking if server sync ID LV6m3mDsytmO matches existing
+1789411520371	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411520688	Sync.Collection	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/history?newer=1789386638.48&full=1&sort=newest&limit=1000
+1789411520728	Sync.Engine.History.Store	DEBUG	adding 73 records to history
+1789411520782	Sync.Engine.History	INFO	Records: 73 applied, 73 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411520783	Sync.Engine.History	INFO	Uploading 285 outgoing records
+1789411520817	Sync.Engine.History	INFO	Posting 100 records of 56257 bytes with batch=true
+1789411520818	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411520818	Sync.Collection	DEBUG	POST Length: 56257
+1789411521107	Sync.Collection	DEBUG	POST success 202 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/history?batch=true
+1789411521142	Sync.Engine.History	INFO	Posting 100 records of 60265 bytes with batch=016f68aa092145d68f13c04803eb5ff6
+1789411521142	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411521142	Sync.Collection	DEBUG	POST Length: 60265
+1789411521449	Sync.Collection	DEBUG	POST success 202 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/history?batch=016f68aa092145d68f13c04803eb5ff6
+1789411521498	Sync.Engine.History	INFO	Posting 85 records of 60743 bytes with batch=016f68aa092145d68f13c04803eb5ff6
+1789411521498	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411521498	Sync.Collection	DEBUG	POST Length: 60743
+1789411521986	Sync.Collection	DEBUG	POST success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/history?batch=016f68aa092145d68f13c04803eb5ff6&commit=true
+1789411521989	Sync.Engine.Extension-Storage	DEBUG	Initializing sync temp tables
+1789411521990	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1789411522179	Sync.Collection	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/289519626/storage/extension-storage?newer=1789381379.26&full=1&limit=1000
+1789411522190	Sync.Engine.Extension-Storage	INFO	Records: 1 applied, 1 successfully, 0 failed to apply, 0 newly failed to apply, 0 reconciled.
+1789411522197	Sync.Engine.Extension-Storage	DEBUG	get_outgoing found 0 items
+1789411522198	Sync.Engine.Extension-Storage	INFO	Uploading 0 outgoing records
+1789411522198	Sync.Engine.Extension-Storage	DEBUG	Initializing sync temp tables
+1789411522199	Sync.Doctor	INFO	Skipping consultation: telemetry reporting is disabled
+1789411522199	Sync.Status	DEBUG	Status.sync: success.sync => success.sync
+1789411522199	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1789411522199	Sync.Synchronizer	INFO	Sync completed at 2026-09-14 19:45:22 after 3.87 secs.
+1789411522199	Sync.Declined	DEBUG	Handling remote declined: []
+1789411522199	Sync.Declined	DEBUG	Handling local declined: []
+1789411522199	Sync.Declined	DEBUG	Declined changed? false
+1789411522199	Sync.Service	INFO	No change to declined engines. Not reuploading meta/global.
+1789411522201	Sync.SyncScheduler	DEBUG	Next sync in 90000 ms. (why=schedule)
