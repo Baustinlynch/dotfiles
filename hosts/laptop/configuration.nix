@@ -22,10 +22,15 @@
   users.users.brenden = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
+  # fish is the login shell; keep bash enabled as a fallback for scripts.
+  programs.fish.enable = true;
+  programs.bash.enable = true;
+  # zsh stays installed so existing workflows/scripts still work.
   programs.zsh.enable = true;
+
   programs.git.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
