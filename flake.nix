@@ -11,9 +11,11 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Hermes Agent - provides packages, a NixOS module and a Home Manager module.
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, ... }:
+  outputs = { self, nixpkgs, home-manager, niri, hermes-agent, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -25,7 +27,12 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.brenden = import ./home;
+            home-manager.users.brenden = {
+              imports = [
+                hermes-agent.homeManagerModules.default
+                ./home
+              ];
+            };
           }
           niri.nixosModules.niri
         ];
