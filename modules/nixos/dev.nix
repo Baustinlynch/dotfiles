@@ -20,5 +20,6 @@
     nodejs_22
     go
     rustup
+    opencode
   ];
 }
