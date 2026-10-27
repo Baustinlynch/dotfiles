@@ -33,6 +33,7 @@
     fuzzel
     mako
     alacritty
+    zed-editor
     nautilus
   ];
 }
