@@ -48,6 +48,11 @@
   services.syncthing = {
     enable = true;
     user = "brenden";
+    group = "users";
+    # Running as a normal user, so keep data/config in the home directory.
+    # (The default /var/lib/syncthing is only writable by the dedicated
+    # "syncthing" user that the module creates when user is left at default.)
+    dataDir = "/home/brenden";
     openDefaultPorts = true; #Open firewall ports
   };
   # Enable Tailscale
