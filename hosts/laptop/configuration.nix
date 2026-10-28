@@ -43,4 +43,14 @@
   programs.niri.enable = true;
 
   system.stateVersion = "24.11";
+
+  #Enable syncthing
+  services.syncthing = {
+    enable = true;
+    user = "brenden";
+    openDefaultPorts = true; #Open firewall ports
+  };
+  # Enable Tailscale
+  services.tailscale.enable = true;
+
 }

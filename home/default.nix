@@ -50,8 +50,15 @@
   # services.hermes-agent here unless you want the persistent gateway daemon.
   programs.hermes-agent.enable = true;
 
+  programs.obsidian = {
+    enable = true;
+    # Register existing vaults. Paths are relative to $HOME.
+    vaults.personal.target = "Documents/Obsidian";
+  };
+
   home.packages = with pkgs; [
     firefox
+    btop
   ];
 
   # Waybar config
