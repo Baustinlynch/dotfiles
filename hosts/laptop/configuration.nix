@@ -36,9 +36,11 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  # University of Edinburgh "LT_OPEN" TLS interception root CA.
+  # Boroughmuir High Schoo; "LT_OPEN" TLS interception root CA.
   # The network MITMs TLS; without this, nix/curl/firefox fail cert validation.
   security.pki.certificates = [ (builtins.readFile ./lt-rootca.pem) ];
+
+  programs.niri.enable = true;
 
   system.stateVersion = "24.11";
 }

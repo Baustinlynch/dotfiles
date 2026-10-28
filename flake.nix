@@ -7,15 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # Hermes Agent - provides packages, a NixOS module and a Home Manager module.
     hermes-agent.url = "github:NousResearch/hermes-agent";
+    # Zen Browser (not packaged in nixpkgs).
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { self, nixpkgs, home-manager, niri, hermes-agent, ... }:
+  outputs = { self, nixpkgs, home-manager, hermes-agent, zen-browser, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -34,7 +32,12 @@
               ];
             };
           }
-          niri.nixosModules.niri
+          # Zen Browser comes from its own flake (not in nixpkgs).
+          {
+            environment.systemPackages = [
+              zen-browser.packages.${system}.default
+            ];
+          }
         ];
       };
     };

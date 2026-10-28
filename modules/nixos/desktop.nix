@@ -17,6 +17,10 @@
     pulse.enable = true;
   };
 
+  # Power profiles (balanced / performance / power-saver).
+  # Toggle with: powerprofilesctl set power-saver
+  services.power-profiles-daemon.enable = true;
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
@@ -35,5 +39,22 @@
     alacritty
     zed-editor
     nautilus
+    # Niri essentials
+    swaylock
+    brightnessctl
+    playerctl
+    wl-clipboard
+    grim
+    slurp
+    swappy
+    networkmanagerapplet
+    blueman
+    pavucontrol
+    pamixer
+    xdg-utils
+    waypaper
+    swaybg
+    # Polkit agent
+    polkit_gnome
   ];
 }
