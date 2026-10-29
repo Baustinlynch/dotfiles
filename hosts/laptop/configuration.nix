@@ -9,6 +9,15 @@
 
   networking.hostName = "inspiron-3525";
   networking.networkmanager.enable = true;
+  # Disable Wi-Fi power saving: the RTL8821CE (rtw88) drops off the
+  # corporate 802.1X network when power save / deep LPS kicks in.
+  networking.networkmanager.wifi.powersave = false;
+
+  # RTL8821CE stability: disable PCIe ASPM and deep low-power save.
+  boot.extraModprobeConfig = ''
+    options rtw88_pci disable_aspm=1
+    options rtw88_core disable_lps_deep=1
+  '';
 
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
