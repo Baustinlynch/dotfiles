@@ -3,6 +3,10 @@
 {
   programs.niri.enable = true;
 
+  # X11 apps (e.g. Steam) need DISPLAY pointing at the Xwayland provided by
+  # xwayland-satellite, which niri starts on :0.
+  environment.sessionVariables.DISPLAY = ":0";
+
   services.greetd = {
     enable = true;
     settings.default_session = {
@@ -80,6 +84,7 @@
     zed-editor
     nautilus
     # Niri essentials
+    xwayland-satellite # X11 bridge for niri (Steam and other X11 apps)
     swaylock
     brightnessctl
     playerctl
