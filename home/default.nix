@@ -72,6 +72,7 @@
   xdg.configFile."waybar/style.css".source  = ../dotfiles/waybar/style.css;
   xdg.configFile."fuzzel/fuzzel.ini".source = ../dotfiles/fuzzel/fuzzel.ini;
   xdg.configFile."mako/config".source       = ../dotfiles/mako/config;
+  xdg.configFile."niri/config".source      = ../dotfiles/niri/config;
 
   # Mutable: out-of-store symlink, so the app writes back into the repo.
   # Content is NOT captured by the Nix generation (rollback won't restore it).
