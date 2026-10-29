@@ -21,7 +21,7 @@ Dell Inspiron 15 3525, then applies this flake config.
 - Finish the installer and let it install a default NixOS system.
 
 ## 4. First boot into the default system
-- Reboot, remove the USB. The installer's GRUB should show NixOS (and Windows).
+- Reboot, remove the USB. The installer's bootloader should show NixOS.
 - Log in with the user you created.
 
 ## 5. Apply this flake config
@@ -33,18 +33,10 @@ cd /etc/nixos
 sudo nixos-generate-config --show-hardware-config > hosts/laptop/hardware-configuration.nix
 ```
 
-## 6. Dual-boot: enable os-prober (GRUB)
-The flake currently uses systemd-boot, which won't auto-detect Windows.
-Edit `hosts/laptop/configuration.nix` and replace the boot loader block with:
-
-```nix
-boot.loader.grub.enable = true;
-boot.loader.grub.efiSupport = true;
-boot.loader.grub.useOSProber = true;
-boot.loader.grub.device = "nodev";
-```
-
-(Remove/disable the `systemd-boot.enable` line.)
+## 6. Dual-boot note
+The install now uses **systemd-boot** (`hosts/laptop/configuration.nix`), not GRUB.
+GRUB/os-prober is only needed if you deliberately switch loaders; the live config
+does not use GRUB on this machine.
 
 ## 7. Apply
 ```bash
@@ -60,4 +52,5 @@ lspci | grep -i net
 - MediaTek MT7921 → works with the default kernel driver.
 
 ## 9. Reboot
-You now have a GRUB menu with both NixOS and Windows.
+You now boot straight into the systemd-boot menu (niri session via greetd).
+Select the NixOS generation to boot.

@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  home.sessionVariables = {
+    FONTCONFIG_FILE = "${config.home.homeDirectory}/.config/fontconfig/fonts.conf";
+  };
+
   home.username = "brenden";
   home.homeDirectory = "/home/brenden";
   home.stateVersion = "24.11";
@@ -52,13 +56,16 @@
 
   programs.obsidian = {
     enable = true;
-    # Register existing vaults. Paths are relative to $HOME.
     vaults.personal.target = "Documents/Obsidian";
   };
 
   home.packages = with pkgs; [
     firefox
     btop
+    lunar-client
+    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+    fontconfig
   ];
 
   # Waybar config
@@ -68,7 +75,7 @@
     height = 30;
     modules-left = ["niri/workspaces" "niri/window"];
     modules-center = ["clock"];
-    modules-right = ["pulseaudio" "network" "battery" "tray" "custom/power"];
+    modules-right = ["pulseaudio" "network" "battery" "tray" "custom/power" "custom/network-manager" "custom/power-profile"];
     "niri/workspaces" = { format = "{icon}"; format-icons = { default = ""; active = ""; }; };
     "niri/window" = { max-length = 50; };
     clock = { format = "{:%Y-%m-%d %H:%M}"; tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"; };
@@ -76,6 +83,8 @@
     network = { format-wifi = "{essid} ({signalStrength}%) "; format-ethernet = "{ipaddr} "; format-disconnected = "Disconnected ⚠"; tooltip-format = "{ifname} via {gwaddr} "; };
     battery = { states = { warning = 30; critical = 15; }; format = "{capacity}% {icon}"; format-icons = ["" "" "" "" ""]; };
     tray = { spacing = 10; };
+    "custom/network-manager" = { format = ""; on-click = "nm-connection-editor"; tooltip = "Network Manager"; };
+    "custom/power-profile" = { format = "{}"; exec = "bash -c 'echo $(powerprofilesctl get)'"; exec-once = false; interval = 30; tooltip = "Power Profile"; };
     "custom/power" = { format = ""; on-click = "wlogout || fuzzel --dmenu -p 'Power:' <<< $'Logout\\nSuspend\\nReboot\\nShutdown' | xargs -r sh -c 'case \"$1\" in Logout) loginctl terminate-session $(loginctl session-status | head -n1 | awk \"{print \\$1}\");; Suspend) systemctl suspend;; Reboot) systemctl reboot;; Shutdown) systemctl poweroff;; esac' _"; tooltip = false; };
   };
 
@@ -95,7 +104,7 @@
     #workspaces button.active {
       color: #89b4fa;
     }
-    #clock, #pulseaudio, #network, #battery, #tray, #custom-power {
+    #clock, #pulseaudio, #network, #battery, #tray, #custom-power, #custom-network-manager, #custom-power-profile {
       padding: 0 10px;
     }
   '';
@@ -137,4 +146,5 @@
     layer=overlay
     anchor=top-right
   '';
+  fonts.fontconfig.enable = true;
 }

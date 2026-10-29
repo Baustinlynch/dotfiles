@@ -10,11 +10,15 @@
   networking.hostName = "inspiron-3525";
   networking.networkmanager.enable = true;
 
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = "Europe/London";
+  i18n.defaultLocale = "en_GB.UTF-8";
+  services.xserver.xkb.layout = "gb";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # Cap the number of boot menu entries kept in the ESP (default is unlimited
+  # on some setups; 10 is plenty for rollbacks and keeps /boot small).
+  boot.loader.systemd-boot.configurationLimit = 10;
 
   hardware.cpu.amd.updateMicrocode = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
@@ -36,7 +40,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 
-  # Boroughmuir High Schoo; "LT_OPEN" TLS interception root CA.
+  # Boroughmuir High School; "LT_OPEN" TLS interception root CA.
   # The network MITMs TLS; without this, nix/curl/firefox fail cert validation.
   security.pki.certificates = [ (builtins.readFile ./lt-rootca.pem) ];
 
@@ -57,5 +61,10 @@
   };
   # Enable Tailscale
   services.tailscale.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
 
 }
