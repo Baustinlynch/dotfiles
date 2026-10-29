@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/dev.nix
+    ../../modules/nixos/hardware/touchpad.nix
   ];
 
   networking.hostName = "inspiron-3525";
@@ -71,9 +72,9 @@
   # Enable Tailscale
   services.tailscale.enable = true;
 
- # programs.steam = {
-    #enable = true;
-   # remotePlay.openFirewall = true;
-  #};
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
 
 }

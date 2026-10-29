@@ -32,9 +32,9 @@
 
 
   # Lid close behavior: suspend-then-hibernate with 1 min delay
-  services.logind = {
-    lidSwitch = "suspend-then-hibernate";
-    lidSwitchDocked = "ignore";
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchDocked = "ignore";
   };
   systemd.sleep.settings.Sleep.HibernateDelaySec = "1min";
 

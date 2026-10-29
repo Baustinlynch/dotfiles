@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.sessionVariables = {
-    FONTCONFIG_FILE = "${config.home.homeDirectory}/.config/fontconfig/fonts.conf";
-  };
-
   home.username = "brenden";
   home.homeDirectory = "/home/brenden";
   home.stateVersion = "24.11";
@@ -34,6 +30,7 @@
       ll = "ls -l";
       g = "git";
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+      secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
     };
     interactiveShellInit = ''
       set -g fish_greeting ""
@@ -62,89 +59,31 @@
   home.packages = with pkgs; [
     firefox
     btop
+    gitleaks
     lunar-client
     jetbrains-mono
     nerd-fonts.jetbrains-mono
     fontconfig
   ];
 
-  # Waybar config
-  xdg.configFile."waybar/config".text = builtins.toJSON {
-    layer = "top";
-    position = "top";
-    height = 30;
-    modules-left = ["niri/workspaces" "niri/window"];
-    modules-center = ["clock"];
-    modules-right = ["pulseaudio" "network" "battery" "tray" "custom/power" "custom/network-manager" "custom/power-profile"];
-    "niri/workspaces" = { format = "{icon}"; format-icons = { default = ""; active = ""; }; };
-    "niri/window" = { max-length = 50; };
-    clock = { format = "{:%Y-%m-%d %H:%M}"; tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"; };
-    pulseaudio = { format = "{volume}% {icon}"; format-muted = ""; format-icons = { default = ["" "" ""]; }; on-click = "pavucontrol"; };
-    network = { format-wifi = "{essid} ({signalStrength}%) "; format-ethernet = "{ipaddr} "; format-disconnected = "Disconnected ⚠"; tooltip-format = "{ifname} via {gwaddr} "; };
-    battery = { states = { warning = 30; critical = 15; }; format = "{capacity}% {icon}"; format-icons = ["" "" "" "" ""]; };
-    tray = { spacing = 10; };
-    "custom/network-manager" = { format = ""; on-click = "nm-connection-editor"; tooltip = "Network Manager"; };
-    "custom/power-profile" = { format = "{}"; exec = "bash -c 'echo $(powerprofilesctl get)'"; exec-once = false; interval = 30; tooltip = "Power Profile"; };
-    "custom/power" = { format = ""; on-click = "wlogout || fuzzel --dmenu -p 'Power:' <<< $'Logout\\nSuspend\\nReboot\\nShutdown' | xargs -r sh -c 'case \"$1\" in Logout) loginctl terminate-session $(loginctl session-status | head -n1 | awk \"{print \\$1}\");; Suspend) systemctl suspend;; Reboot) systemctl reboot;; Shutdown) systemctl poweroff;; esac' _"; tooltip = false; };
-  };
+  # --- Dotfiles (real files in ../dotfiles/, symlinked in by Home Manager) ---
+  # Static: edit file + `git add` + rebuild to apply.
+  xdg.configFile."waybar/config".source     = ../dotfiles/waybar/config;
+  xdg.configFile."waybar/style.css".source  = ../dotfiles/waybar/style.css;
+  xdg.configFile."fuzzel/fuzzel.ini".source = ../dotfiles/fuzzel/fuzzel.ini;
+  xdg.configFile."mako/config".source       = ../dotfiles/mako/config;
 
-  xdg.configFile."waybar/style.css".text = ''
-    * {
-      font-family: "JetBrainsMono Nerd Font", monospace;
-      font-size: 13px;
-    }
-    window#waybar {
-      background: rgba(30, 30, 46, 0.8);
-      color: #cdd6f4;
-    }
-    #workspaces button {
-      padding: 0 5px;
-      color: #cdd6f4;
-    }
-    #workspaces button.active {
-      color: #89b4fa;
-    }
-    #clock, #pulseaudio, #network, #battery, #tray, #custom-power, #custom-network-manager, #custom-power-profile {
-      padding: 0 10px;
-    }
-  '';
+  # Mutable: out-of-store symlink, so the app writes back into the repo.
+  # Content is NOT captured by the Nix generation (rollback won't restore it).
+  xdg.configFile."waypaper/config.ini".source =
+    config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/nixos-config/dotfiles/waypaper/config.ini";
+  xdg.configFile."zed/settings.json".source =
+    config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/nixos-config/dotfiles/zed/settings.json";
+  xdg.configFile."obsidian/obsidian.json".source =
+    config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/nixos-config/dotfiles/obsidian/obsidian.json";
 
-  # Fuzzel config
-  xdg.configFile."fuzzel/fuzzel.ini".text = ''
-    [main]
-    font=JetBrainsMono Nerd Font:size=12
-    dpi-aware=auto
-    width=50
-    horizontal-pad=20
-    vertical-pad=10
-    inner-pad=5
-    line-height=20
-    icons-enabled=yes
-    show-actions=no
-    terminal=alacritty
-
-    [colors]
-    background=1e1e2eff
-    text=cdd6f4ff
-    match=f38ba8ff
-    selection-match=f38ba8ff
-    selection=313244ff
-    selection-text=cdd6f4ff
-    border=89b4faff
-  '';
-
-  # Mako config
-  xdg.configFile."mako/config".text = ''
-    font=JetBrainsMono Nerd Font 10
-    background-color=#1e1e2eAA
-    text-color=#cdd6f4
-    border-color=#89b4fa
-    border-radius=8
-    border-size=2
-    default-timeout=5000
-    max-visible=5
-    layer=overlay
-    anchor=top-right
-  '';
   fonts.fontconfig.enable = true;
 }

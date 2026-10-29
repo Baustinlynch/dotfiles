@@ -1,0 +1,14 @@
+#!/bin/sh
+# Secret scan on staged changes. Version-controlled: enable with
+#   git config core.hooksPath .githooks
+# Bypass for a false positive with `git commit --no-verify` (then add an
+# allowlist entry to .gitleaks.toml instead of leaving the bypass habit).
+set -eu
+
+if command -v gitleaks >/dev/null 2>&1; then
+  # gitleaks git --pre-commit --staged  (v8.19+ syntax)
+  gitleaks git --pre-commit --staged --redact --no-banner -v
+else
+  # gitleaks not on PATH yet (pre-rebuild) — fall back to a throwaway nix run.
+  nix run nixpkgs#gitleaks -- git --pre-commit --staged --redact --no-banner -v
+fi

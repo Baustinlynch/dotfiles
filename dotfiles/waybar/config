@@ -1,0 +1,87 @@
+{
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "states": {
+      "critical": 15,
+      "warning": 30
+    }
+  },
+  "clock": {
+    "format": "{:%Y-%m-%d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "custom/network-manager": {
+    "format": "",
+    "on-click": "nm-connection-editor",
+    "tooltip": "Network Manager"
+  },
+  "custom/power": {
+    "format": "",
+    "on-click": "wlogout || fuzzel --dmenu -p 'Power:' <<< $'Logout\\nSuspend\\nReboot\\nShutdown' | xargs -r sh -c 'case \"$1\" in Logout) loginctl terminate-session $(loginctl session-status | head -n1 | awk \"{print \\$1}\");; Suspend) systemctl suspend;; Reboot) systemctl reboot;; Shutdown) systemctl poweroff;; esac' _",
+    "tooltip": false
+  },
+  "custom/power-profile": {
+    "exec": "bash -c 'echo $(powerprofilesctl get)'",
+    "exec-once": false,
+    "format": "{}",
+    "interval": 30,
+    "tooltip": "Power Profile"
+  },
+  "height": 30,
+  "layer": "top",
+  "modules-center": [
+    "clock"
+  ],
+  "modules-left": [
+    "niri/workspaces",
+    "niri/window"
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "network",
+    "battery",
+    "tray",
+    "custom/power",
+    "custom/network-manager",
+    "custom/power-profile"
+  ],
+  "network": {
+    "format-disconnected": "Disconnected ⚠",
+    "format-ethernet": "{ipaddr} ",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format": "{ifname} via {gwaddr} "
+  },
+  "niri/window": {
+    "max-length": 50
+  },
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": ""
+    }
+  },
+  "position": "top",
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "format-muted": "",
+    "on-click": "pavucontrol"
+  },
+  "tray": {
+    "spacing": 10
+  }
+}
