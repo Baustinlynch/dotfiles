@@ -75,15 +75,21 @@
 
   # Mutable: out-of-store symlink, so the app writes back into the repo.
   # Content is NOT captured by the Nix generation (rollback won't restore it).
-  xdg.configFile."waypaper/config.ini".source =
-    config.lib.file.mkOutOfStoreSymlink
+  xdg.configFile."waypaper/config.ini" = {
+    source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/nixos-config/dotfiles/waypaper/config.ini";
-  xdg.configFile."zed/settings.json".source =
-    config.lib.file.mkOutOfStoreSymlink
+    force = true;
+  };
+  xdg.configFile."zed/settings.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/nixos-config/dotfiles/zed/settings.json";
-  xdg.configFile."obsidian/obsidian.json".source =
-    config.lib.file.mkOutOfStoreSymlink
+    force = true;
+  };
+  xdg.configFile."obsidian/obsidian.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/nixos-config/dotfiles/obsidian/obsidian.json";
+    force = true;
+  };
 
   fonts.fontconfig.enable = true;
 }
