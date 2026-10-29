@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # NixOS Config
 
 Flake-based NixOS configuration for Dell Inspiron 15 3525 (AMD Ryzen, Radeon graphics).
@@ -75,3 +76,6 @@ gitleaks git . --redact --no-banner -v     # or the `secrets` fish alias
 A false positive goes in `.gitleaks.toml` as an allowlist entry — not into a
 `--no-verify` habit. Note gitleaks ships allowlist entries for well-known example
 keys (e.g. AWS's `AKIAIOSFODNN7EXAMPLE`), so that string won't trip the hook.
+=======
+my Nixos Config
+>>>>>>> 3cea4d0a26c51069470196dde28d6eb55eff3d73
