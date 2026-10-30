@@ -1,4 +1,13 @@
 {
+  "agent": {
+    "favorite_models": [],
+    "inline_assistant_model": {
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "enable_thinking": false
+    },
+    "model_parameters": []
+  },
   "auto_install_extensions": {
     "hackatime": true
   }

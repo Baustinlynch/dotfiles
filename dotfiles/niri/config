@@ -231,7 +231,7 @@ layout {
         // window. These will also remove client-side shadows if the window
         // draws any.
         //
-        // draw-behind-window true
+        draw-behind-window true
 
         // You can change how shadows look. The values below are in logical
         // pixels and match the CSS box-shadow properties.
@@ -355,9 +355,24 @@ window-rule {
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^md\.obsidian$"#
+    opacity 0.95
+}
+
+window-rule {
+    match app-id=r#"^com\.alacritty\.Alacritty$"#
+    opacity 0.95
+}
+
+window-rule {
+    match app-id=r#"^dev\.zed\.Zed$"#
+    opacity 0.95
 }
 
 binds {
