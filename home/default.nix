@@ -30,8 +30,8 @@
     shellAliases = {
       ll = "ls -l";
       g = "git";
-      update = "cd ~/nixos-config; and nix flake update";
-      rebuild = "cd ~/nixos-config; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+
+      rebuild = "cd ~/nixos-config; and sudo nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
       secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
       c = "clear; and hyfetch";
     };
@@ -56,7 +56,10 @@
   # Hermes Agent CLI (Home Manager module imported in flake.nix).
   # First run: `hermes setup` to add API keys. Do NOT also enable
   # services.hermes-agent here unless you want the persistent gateway daemon.
-  programs.hermes-agent.enable = true;
+  programs.hermes-agent = {
+    enable = true;
+    desktop.enable = true; # Electron desktop app + XDG launcher
+  };
 
   programs.obsidian = {
     enable = true;
