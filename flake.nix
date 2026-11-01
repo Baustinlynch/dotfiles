@@ -24,10 +24,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, hermes-agent, zen-browser, onenote-linux, ... }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      hermes-agent,
+      zen-browser,
+      onenote-linux,
+      ...
+    }:
     let
       system = "x86_64-linux";
-    in {
+    in
+    {
       # Formatter for nix files
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
 
@@ -42,6 +52,7 @@
           ./hosts/laptop/configuration.nix
           home-manager.nixosModules.home-manager
           {
+            nixpkgs.overlays = [ hermes-agent.overlays.default ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.brenden = {

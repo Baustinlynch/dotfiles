@@ -283,8 +283,8 @@ spawn-at-startup "polkit-gnome-authentication-agent-1"
 // Network/Bluetooth applets
 spawn-at-startup "nm-applet"
 spawn-at-startup "blueman-applet"
-// Wallpaper manager
-spawn-at-startup "waypaper --restore"
+// Wallpaper: restored by the waypaper.service systemd user unit, which is
+// ordered after awww-daemon.service (waypaper --restore hangs without the daemon).
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"

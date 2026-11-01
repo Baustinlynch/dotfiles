@@ -25,25 +25,26 @@
   };
 
   # Fish config: split rebuild/update, guard hyfetch to login shells only
-  programs.fish = {enable = true;
-      shellAliases = {
-        ll = "ls -l";
-        g = "git";
-        update = "cd ~/nixos-config; and nix flake update";
-        rebuild = "cd ~/nixos-config; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
-        secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
-        c = "clear; and hyfetch";
-      };
-      interactiveShellInit = ''
-        set -g fish_greeting ""
-        # ~/.local/bin is now on PATH via home.sessionPath
-        # Launch hyfetch only on login shells (not every tmux pane/nested shell),
-        # and only when the terminal is alacritty (dotfiles/alacritty sets TERM=alacritty).
-        if status is-login; or string match -q "*alacritty*" "$TERM"
-          hyfetch
-        end
-      '';
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      g = "git";
+      update = "cd ~/nixos-config; and nix flake update";
+      rebuild = "cd ~/nixos-config; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+      secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
+      c = "clear; and hyfetch";
     };
+    interactiveShellInit = ''
+      set -g fish_greeting ""
+      # ~/.local/bin is now on PATH via home.sessionPath
+      # Launch hyfetch only on login shells (not every tmux pane/nested shell),
+      # and only when the terminal is alacritty (dotfiles/alacritty sets TERM=alacritty).
+      if status is-login; or string match -q "*alacritty*" "$TERM"
+        hyfetch
+      end
+    '';
+  };
 
   programs.zsh = {
     enable = true;
@@ -74,9 +75,9 @@
     nerd-fonts.jetbrains-mono
     fontconfig
     spotify
-    awww          # waypaper backend
-    hyfetch       # shell greeting (fish alias 'c')
-    gnome-calculator  # XF86Calculator bind
+    awww # waypaper backend
+    hyfetch # shell greeting (fish alias 'c')
+    gnome-calculator # XF86Calculator bind
     opencode-desktop
     rpm
     # Dev tools (moved from dev.nix)
@@ -97,40 +98,37 @@
 
   # --- Dotfiles (real files in ../dotfiles/, symlinked in by Home Manager) ---
   # Static: edit file + `git add` + rebuild to apply.
-  xdg.configFile."waybar/config".source     = ../dotfiles/waybar/config;
-  xdg.configFile."waybar/style.css".source  = ../dotfiles/waybar/style.css;
+  xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
+  xdg.configFile."waybar/style.css".source = ../dotfiles/waybar/style.css;
   xdg.configFile."fuzzel/fuzzel.ini".source = ../dotfiles/fuzzel/fuzzel.ini;
-  xdg.configFile."mako/config".source       = ../dotfiles/mako/config;
-  xdg.configFile."niri/config.kdl".source      = ../dotfiles/niri/config.kdl;
+  xdg.configFile."mako/config".source = ../dotfiles/mako/config;
+  xdg.configFile."niri/config.kdl".source = ../dotfiles/niri/config.kdl;
   xdg.configFile."alacritty/alacritty.toml".source = ../dotfiles/alacritty/alacritty.toml;
-  xdg.configFile."mimeapps.list".source     = ../dotfiles/mimeapps.list;
-  xdg.configFile."hyfetch.json".source      = ../dotfiles/hyfetch.json;
+  xdg.configFile."mimeapps.list".source = ../dotfiles/mimeapps.list;
+  xdg.configFile."hyfetch.json".source = ../dotfiles/hyfetch.json;
 
   # Mutable: out-of-store symlink, so the app writes back into the repo.
   # Content is NOT captured by the Nix generation (rollback won't restore it).
   xdg.configFile."waypaper/config.ini" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/nixos-config/dotfiles/waypaper/config.ini";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/waypaper/config.ini";
     force = true;
   };
   xdg.configFile."zed/settings.json" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/nixos-config/dotfiles/zed/settings.json";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/zed/settings.json";
     force = true;
   };
   xdg.configFile."obsidian/obsidian.json" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/nixos-config/dotfiles/obsidian/obsidian.json";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/obsidian/obsidian.json";
     force = true;
   };
   xdg.configFile."btop/btop.conf" = {
-    source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/nixos-config/dotfiles/btop/btop.conf";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/btop/btop.conf";
     force = true;
   };
 
   # Desktop entries
-  xdg.configFile."applications/dev.slick.Slick.desktop".source = ../dotfiles/applications/dev.slick.Slick.desktop;
+  xdg.configFile."applications/dev.slick.Slick.desktop".source =
+    ../dotfiles/applications/dev.slick.Slick.desktop;
 
   fonts.fontconfig.enable = true;
 
@@ -145,47 +143,62 @@
   xdg.configFile."systemd/user/nixos-config-update-check.service".enable = false;
   xdg.configFile."systemd/user/nixos-config-update-check.timer".enable = false;
 
-  # User systemd services (previously only in ~/.config/systemd/user/)
+  # User systemd services (raw-unit style required by the pinned Home Manager:
+  # sections are Unit/Service/Install with systemd's capitalized keys).
   systemd.user.services = {
     waybar = {
-      description = "Waybar status bar";
-      serviceConfig = {
-        Type = "simple";
+      Unit.Description = "Waybar status bar";
+      Service = {
         ExecStart = "${pkgs.waybar}/bin/waybar";
         Restart = "on-failure";
         RestartSec = 2;
       };
-      wantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
+
+    awww-daemon = {
+      Unit.Description = "awww wallpaper daemon";
+      Service = {
+        ExecStart = "${pkgs.awww}/bin/awww-daemon";
+        Restart = "on-failure";
+        RestartSec = 2;
+      };
+      Install.WantedBy = [ "graphical-session.target" ];
     };
 
     waypaper = {
-      description = "Waypaper wallpaper restore";
-      serviceConfig = {
+      Unit.Description = "Waypaper wallpaper restore";
+      # Don't attempt the restore until the awww daemon is up — it hangs otherwise.
+      Unit.After = [ "awww-daemon.service" ];
+      Unit.Wants = [ "awww-daemon.service" ];
+      Service = {
         Type = "oneshot";
         RemainAfterExit = true;
-        # Retry so the awww daemon / session have time to come up after login.
+        # Retry so the session (outputs, sockets) has time to settle after login.
         ExecStart = "${pkgs.bash}/bin/bash -lc 'for i in 1 2 3 4 5; do ${pkgs.waypaper}/bin/waypaper --restore && break; sleep 2; done'";
       };
-      wantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = [ "graphical-session.target" ];
     };
 
     "hermes-gateway" = {
-      description = "Hermes Agent gateway daemon";
+      Unit.Description = "Hermes Agent gateway daemon";
       # user must run `hermes setup` first
-      serviceConfig = {
-        Type = "simple";
+      Service = {
         ExecStart = "${pkgs.hermes-agent}/bin/hermes gateway";
         Restart = "on-failure";
         RestartSec = 5;
       };
-      wantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = [ "graphical-session.target" ];
     };
 
     "nixos-config-update-check" = {
-      description = "Check the NixOS config repository for remote updates";
-      serviceConfig = {
+      Unit.Description = "Check the NixOS config repository for remote updates";
+      Service = {
         Type = "oneshot";
-        Environment = [ "HOME=${config.home.homeDirectory}" "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin" ];
+        Environment = [
+          "HOME=${config.home.homeDirectory}"
+          "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin"
+        ];
         ExecStart = "${config.home.homeDirectory}/.local/bin/check-nixos-config-updates";
       };
     };
@@ -193,15 +206,15 @@
 
   systemd.user.timers = {
     "nixos-config-update-check" = {
-      description = "Check NixOS config updates after login and periodically";
-      partOf = [ "timers.target" ];
-      timerConfig = {
+      Unit.Description = "Check NixOS config updates after login and periodically";
+      Unit.PartOf = [ "timers.target" ];
+      Install.WantedBy = [ "timers.target" ];
+      Timer = {
         OnBootSec = "3min";
         OnUnitInactiveSec = "30min";
         AccuracySec = "1min";
         Unit = "nixos-config-update-check.service";
       };
-      wantedBy = [ "timers.target" ];
     };
   };
 
