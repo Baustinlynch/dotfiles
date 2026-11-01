@@ -3,7 +3,7 @@
     "favorite_models": [],
     "inline_assistant_model": {
       "provider": "openrouter",
-      "model": "openrouter/free",
+      "model": "cohere/north-mini-code:free",
       "enable_thinking": false
     },
     "model_parameters": []
