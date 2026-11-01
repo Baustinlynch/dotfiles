@@ -30,6 +30,7 @@
         g = "git";
         rebuild = "cd ~/nixos-config; and nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
         secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
+        c = "clear; and hyfetch"
       };
       interactiveShellInit = ''
         set -g fish_greeting ""
