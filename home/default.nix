@@ -33,7 +33,7 @@
       secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
     };
     interactiveShellInit = ''
-      set -g fish_greeting ""
+      set -g fish_greeting "hyfetch"
       # Add cargo/npm-style user bins if they exist.
       fish_add_path --global ~/.local/bin
     '';
@@ -60,6 +60,8 @@
     firefox
     btop
     gitleaks
+    macchina
+    nil
     lunar-client
     jetbrains-mono
     nerd-fonts.jetbrains-mono
