@@ -82,6 +82,7 @@
     hyfetch # shell greeting (fish alias 'c')
     gnome-calculator # XF86Calculator bind
     opencode-desktop
+    opencode # CLI (ai coding agent for the terminal)
     rpm
     # Dev tools (moved from dev.nix)
     vim
