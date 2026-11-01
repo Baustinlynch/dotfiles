@@ -11,9 +11,11 @@
     hermes-agent.url = "github:NousResearch/hermes-agent";
     # Zen Browser (not packaged in nixpkgs).
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    # OneNote Linux desktop client.
+    onenote-linux.url = "github:Baustinlynch/onenote-linux";
   };
 
-  outputs = { self, nixpkgs, home-manager, hermes-agent, zen-browser, ... }:
+  outputs = { self, nixpkgs, home-manager, hermes-agent, zen-browser, onenote-linux, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -36,6 +38,7 @@
           {
             environment.systemPackages = [
               zen-browser.packages.${system}.default
+              onenote-linux.packages.${system}.default
             ];
           }
         ];

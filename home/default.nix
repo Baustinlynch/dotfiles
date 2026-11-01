@@ -64,6 +64,7 @@
     jetbrains-mono
     nerd-fonts.jetbrains-mono
     fontconfig
+    spotify
   ];
 
   # --- Dotfiles (real files in ../dotfiles/, symlinked in by Home Manager) ---
