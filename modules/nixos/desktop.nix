@@ -82,6 +82,7 @@
     mako
     alacritty
     zed-editor
+    geany
     nautilus
     # Niri essentials
     xwayland-satellite # X11 bridge for niri (Steam and other X11 apps)
