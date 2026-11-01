@@ -47,6 +47,12 @@
 
   programs.git.enable = true;
 
+  # Run dynamically linked binaries from generic-Linux releases (Zed
+  # extension language servers, GitHub tarballs, etc.). Without this, the
+  # stub loader at /lib64/ld-linux-x86-64.so.2 refuses to start them.
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [ ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
 

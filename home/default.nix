@@ -29,11 +29,11 @@
     shellAliases = {
       ll = "ls -l";
       g = "git";
-      rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+      rebuild = "cd ~/nixos-config; and nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
       secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
     };
     interactiveShellInit = ''
-      set -g fish_greeting "hyfetch"
+      set -g fish_greeting ""
       # Add cargo/npm-style user bins if they exist.
       fish_add_path --global ~/.local/bin
     '';
@@ -62,6 +62,7 @@
     gitleaks
     macchina
     nil
+    nixd
     lunar-client
     jetbrains-mono
     nerd-fonts.jetbrains-mono
@@ -76,6 +77,7 @@
   xdg.configFile."fuzzel/fuzzel.ini".source = ../dotfiles/fuzzel/fuzzel.ini;
   xdg.configFile."mako/config".source       = ../dotfiles/mako/config;
   xdg.configFile."niri/config".source      = ../dotfiles/niri/config;
+  xdg.configFile."alacritty/alacritty.toml".source = ../dotfiles/alacritty/alacritty.toml;
 
   # Mutable: out-of-store symlink, so the app writes back into the repo.
   # Content is NOT captured by the Nix generation (rollback won't restore it).
