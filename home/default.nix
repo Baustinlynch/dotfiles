@@ -25,25 +25,30 @@
   };
 
   # Fish config: split rebuild/update, guard hyfetch to login shells only
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -l";
-      g = "git";
-      update = "cd ~/nixos-config; and nix flake update";
-      rebuild = "cd ~/nixos-config; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
-      secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
-      c = "clear; and hyfetch";
-    };
-    interactiveShellInit = ''
-      set -g fish_greeting ""
-      # ~/.local/bin is now on PATH via home.sessionPath
-      # Launch hyfetch only on login shells (not every tmux pane/nested shell)
-      if status is-login
-        hyfetch
-      end
-    '';
-  };
+  programs.fish = {enable = true;
+      shellAliases = {
+        ll = "ls -l";
+        g = "git";
+        update = "cd ~/nixos-config; and nix flake update";
+        rebuild = "cd ~/nixos-config; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+        secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
+        c = "clear; and hyfetch";
+      };
+      interactiveShellInit = ''
+        set -g fish_greeting ""
+        # ~/.local/bin is now on PATH via home.sessionPath
+        # Launch hyfetch only on login shells (not every tmux pane/nested shell)
+        if status is-login
+          hyfetch
+        end
+      '';
+      # Additional condition to run hyfetch only in alacritty terminal
+      # This checks if the terminal program is alacritty
+      functions --on-event fish_prompt; and begin
+        if string match -q "*alacritty*" "$TERM"
+          hyfetch
+        end
+      end};
 
   programs.zsh = {
     enable = true;
