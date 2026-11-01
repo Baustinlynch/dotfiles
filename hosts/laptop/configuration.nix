@@ -90,5 +90,5 @@
   };
 
   # Resume from hibernate (swapfile on root). Offset updated by filefrag -v /swapfile.
-  boot.kernelParams = [ "resume=UUID=9eda2a55-0b2a-4f3a-8147-df2a7eb641f4" "resume_offset=249856" ];
+  boot.kernelParams = [ "resume=UUID=9eda2a55-0b2a-4f3a-8147-df2a7eb641f4" "resume_offset=74409984" ];
 }

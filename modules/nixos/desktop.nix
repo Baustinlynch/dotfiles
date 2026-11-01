@@ -53,10 +53,12 @@
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = pkgs.writeShellScript "disable-hibernate-wakeup" ''
+        # Idempotent: only disable if currently enabled
         grep -q "enabled" /sys/devices/platform/PNP0C0D:00/power/wakeup 2>/dev/null && echo disabled > /sys/devices/platform/PNP0C0D:00/power/wakeup  # lid
         grep -q "enabled" /sys/devices/platform/PNP0C0C:00/power/wakeup 2>/dev/null && echo disabled > /sys/devices/platform/PNP0C0C:00/power/wakeup  # power button
         grep -q "GPP1.*enabled" /proc/acpi/wakeup 2>/dev/null && echo GPP1 > /proc/acpi/wakeup
         grep -q "GP17.*enabled" /proc/acpi/wakeup 2>/dev/null && echo GP17 > /proc/acpi/wakeup
+        true  # Ensure script succeeds even if all greps fail
       '';
     };
   };
