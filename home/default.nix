@@ -135,13 +135,8 @@
   # Put ~/.local/bin on PATH for all sessions (GUI apps, non-interactive shells)
   home.sessionPath = [ "$HOME/.local/bin" ];
 
-  # Disable automatic xdg.configFile management for systemd user service files
-  # (they're now managed declaratively via systemd.user.services)
-  xdg.configFile."systemd/user/waybar.service".enable = false;
-  xdg.configFile."systemd/user/waypaper.service".enable = false;
-  xdg.configFile."systemd/user/hermes-gateway.service".enable = false;
-  xdg.configFile."systemd/user/nixos-config-update-check.service".enable = false;
-  xdg.configFile."systemd/user/nixos-config-update-check.timer".enable = false;
+  # (systemd user units are managed by systemd.user.services above, which
+  # writes them as xdg.configFile entries — do not disable them here.)
 
   # User systemd services (raw-unit style required by the pinned Home Manager:
   # sections are Unit/Service/Install with systemd's capitalized keys).
