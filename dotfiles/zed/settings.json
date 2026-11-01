@@ -1,5 +1,10 @@
 {
   "agent": {
+    "default_model": {
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "enable_thinking": true
+    },
     "favorite_models": [],
     "inline_assistant_model": {
       "provider": "openrouter",
