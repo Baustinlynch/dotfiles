@@ -15,7 +15,7 @@ TERM = "alacritty"
 [window]
 opacity = 0.95
 padding = { x = 6, y = 6 }
-decorations = "Full"
+decorations = "None"
 dynamic_title = true
 
 [scrolling]
