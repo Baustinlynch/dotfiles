@@ -1,0 +1,16 @@
+# gitleaks configuration
+# https://github.com/gitleaks/gitleaks
+
+# Extend the default rules instead of replacing them.
+# Without this, any allowlist entries would disable ALL built-in rules.
+[extend]
+useDefault = true
+
+# Allowlist entries for false positives go here.
+# Example:
+# [[allowlist]]
+# description = "Example AWS key in test fixture"
+# paths = ["tests/fixtures/aws_key.txt"]
+# regexes = ['AKIAIOSFODNN7EXAMPLE']
+
+# Commit allowlist entries when you add them.

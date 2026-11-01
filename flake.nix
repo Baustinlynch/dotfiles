@@ -8,17 +8,34 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Hermes Agent - provides packages, a NixOS module and a Home Manager module.
-    hermes-agent.url = "github:NousResearch/hermes-agent";
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Zen Browser (not packaged in nixpkgs).
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # OneNote Linux desktop client.
-    onenote-linux.url = "github:Baustinlynch/onenote-linux";
+    onenote-linux = {
+      url = "github:Baustinlynch/onenote-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, hermes-agent, zen-browser, onenote-linux, ... }:
     let
       system = "x86_64-linux";
     in {
+      # Formatter for nix files
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+
+      # Checks run by `nix flake check`
+      checks.${system} = {
+        toplevel = self.nixosConfigurations.laptop.config.system.build.toplevel;
+      };
+
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [

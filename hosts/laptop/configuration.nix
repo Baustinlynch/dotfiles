@@ -35,7 +35,7 @@
 
   users.users.brenden = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" "video" "audio" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     shell = pkgs.fish;
   };
 
@@ -51,36 +51,44 @@
   # extension language servers, GitHub tarballs, etc.). Without this, the
   # stub loader at /lib64/ld-linux-x86-64.so.2 refuses to start them.
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  # Garbage collection and store optimisation
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 14d";
+  nix.settings.auto-optimise-store = true;
+  nix.optimise.automatic = true;
 
   # Boroughmuir High School; "LT_OPEN" TLS interception root CA.
   # The network MITMs TLS; without this, nix/curl/firefox fail cert validation.
-  security.pki.certificates = [ (builtins.readFile ./lt-rootca.pem) ];
+  security.pki.certificateFiles = [ ./lt-rootca.pem ];
 
-  programs.niri.enable = true;
+  # UK keyboard on TTY as well as X11/Wayland
+  console.keyMap = "uk";
 
   system.stateVersion = "24.11";
 
-  #Enable syncthing
+  # Enable syncthing
   services.syncthing = {
     enable = true;
     user = "brenden";
     group = "users";
-    # Running as a normal user, so keep data/config in the home directory.
-    # (The default /var/lib/syncthing is only writable by the dedicated
-    # "syncthing" user that the module creates when user is left at default.)
-    dataDir = "/home/brenden";
-    openDefaultPorts = true; #Open firewall ports
+    # Running as a normal user, so keep data/config in a state dir, not $HOME.
+    dataDir = "/home/brenden/.local/state/syncthing";
+    openDefaultPorts = true; # Open firewall ports
   };
   # Enable Tailscale
   services.tailscale.enable = true;
+
+  # GVFS for Nautilus trash/removable media
+  services.gvfs.enable = true;
 
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
   };
 
+  # Resume from hibernate (swapfile on root). Offset updated by filefrag -v /swapfile.
+  boot.kernelParams = [ "resume=UUID=9eda2a55-0b2a-4f3a-8147-df2a7eb641f4" "resume_offset=249856" ];
 }

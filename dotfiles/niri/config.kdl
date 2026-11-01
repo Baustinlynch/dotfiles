@@ -88,7 +88,7 @@ input {
     mode "1920x1080@120.030"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 1.5
+    scale 2
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -156,7 +156,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        off
+        // off
 
         // How many logical pixels the ring extends out from the windows.
         width 4
@@ -231,7 +231,7 @@ layout {
         // window. These will also remove client-side shadows if the window
         // draws any.
         //
-        draw-behind-window true
+        // draw-behind-window true
 
         // You can change how shadows look. The values below are in logical
         // pixels and match the CSS box-shadow properties.
@@ -355,24 +355,9 @@ window-rule {
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-window-rule {
+/-window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-}
-
-window-rule {
-    match app-id=r#"^md\.obsidian$"#
-    opacity 0.95
-}
-
-window-rule {
-    match app-id=r#"^com\.alacritty\.Alacritty$"#
-    opacity 0.95
-}
-
-window-rule {
-    match app-id=r#"^dev\.zed\.Zed$"#
-    opacity 0.95
 }
 
 binds {

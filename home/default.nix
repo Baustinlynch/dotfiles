@@ -24,21 +24,26 @@
     };
   };
 
-  programs.fish = {enable = true;
-      shellAliases = {
-        ll = "ls -l";
-        g = "git";
-        rebuild = "cd ~/nixos-config; and nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
-        secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
-        c = "clear; and hyfetch"
-      };
-      interactiveShellInit = ''
-        set -g fish_greeting ""
-        # Add cargo/npm-style user bins if they exist.
-        fish_add_path --global ~/.local/bin
-        # Launch hyfetch on terminal startup
+  # Fish config: split rebuild/update, guard hyfetch to login shells only
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -l";
+      g = "git";
+      update = "cd ~/nixos-config; and nix flake update";
+      rebuild = "cd ~/nixos-config; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+      secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
+      c = "clear; and hyfetch";
+    };
+    interactiveShellInit = ''
+      set -g fish_greeting ""
+      # ~/.local/bin is now on PATH via home.sessionPath
+      # Launch hyfetch only on login shells (not every tmux pane/nested shell)
+      if status is-login
         hyfetch
-      '';};
+      end
+    '';
+  };
 
   programs.zsh = {
     enable = true;
@@ -69,6 +74,25 @@
     nerd-fonts.jetbrains-mono
     fontconfig
     spotify
+    awww          # waypaper backend
+    hyfetch       # shell greeting (fish alias 'c')
+    gnome-calculator  # XF86Calculator bind
+    opencode-desktop
+    rpm
+    # Dev tools (moved from dev.nix)
+    vim
+    neovim
+    wget
+    curl
+    htop
+    ripgrep
+    fd
+    gcc
+    gnumake
+    python3
+    nodejs_22
+    go
+    rustup
   ];
 
   # --- Dotfiles (real files in ../dotfiles/, symlinked in by Home Manager) ---
@@ -77,8 +101,10 @@
   xdg.configFile."waybar/style.css".source  = ../dotfiles/waybar/style.css;
   xdg.configFile."fuzzel/fuzzel.ini".source = ../dotfiles/fuzzel/fuzzel.ini;
   xdg.configFile."mako/config".source       = ../dotfiles/mako/config;
-  xdg.configFile."niri/config".source      = ../dotfiles/niri/config;
+  xdg.configFile."niri/config.kdl".source      = ../dotfiles/niri/config.kdl;
   xdg.configFile."alacritty/alacritty.toml".source = ../dotfiles/alacritty/alacritty.toml;
+  xdg.configFile."mimeapps.list".source     = ../dotfiles/mimeapps.list;
+  xdg.configFile."hyfetch.json".source      = ../dotfiles/hyfetch.json;
 
   # Mutable: out-of-store symlink, so the app writes back into the repo.
   # Content is NOT captured by the Nix generation (rollback won't restore it).
@@ -97,6 +123,110 @@
       "${config.home.homeDirectory}/nixos-config/dotfiles/obsidian/obsidian.json";
     force = true;
   };
+  xdg.configFile."btop/btop.conf" = {
+    source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/nixos-config/dotfiles/btop/btop.conf";
+    force = true;
+  };
+
+  # Desktop entries
+  xdg.configFile."applications/dev.slick.Slick.desktop".source = ../dotfiles/applications/dev.slick.Slick.desktop;
 
   fonts.fontconfig.enable = true;
+
+  # Put ~/.local/bin on PATH for all sessions (GUI apps, non-interactive shells)
+  home.sessionPath = [ "$HOME/.local/bin" ];
+
+  # Disable automatic xdg.configFile management for systemd user service files
+  # (they're now managed declaratively via systemd.user.services)
+  xdg.configFile."systemd/user/waybar.service".enable = false;
+  xdg.configFile."systemd/user/waypaper.service".enable = false;
+  xdg.configFile."systemd/user/hermes-gateway.service".enable = false;
+  xdg.configFile."systemd/user/nixos-config-update-check.service".enable = false;
+  xdg.configFile."systemd/user/nixos-config-update-check.timer".enable = false;
+
+  # User systemd services (previously only in ~/.config/systemd/user/)
+  systemd.user.services = {
+    waybar = {
+      description = "Waybar status bar";
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.waybar}/bin/waybar";
+        Restart = "on-failure";
+        RestartSec = 2;
+      };
+      wantedBy = [ "graphical-session.target" ];
+    };
+
+    waypaper = {
+      description = "Waypaper wallpaper restore";
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        # Retry so the awww daemon / session have time to come up after login.
+        ExecStart = "${pkgs.bash}/bin/bash -lc 'for i in 1 2 3 4 5; do ${pkgs.waypaper}/bin/waypaper --restore && break; sleep 2; done'";
+      };
+      wantedBy = [ "graphical-session.target" ];
+    };
+
+    "hermes-gateway" = {
+      description = "Hermes Agent gateway daemon";
+      # user must run `hermes setup` first
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.hermes-agent}/bin/hermes gateway";
+        Restart = "on-failure";
+        RestartSec = 5;
+      };
+      wantedBy = [ "graphical-session.target" ];
+    };
+
+    "nixos-config-update-check" = {
+      description = "Check the NixOS config repository for remote updates";
+      serviceConfig = {
+        Type = "oneshot";
+        Environment = [ "HOME=${config.home.homeDirectory}" "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/${config.home.username}/bin" ];
+        ExecStart = "${config.home.homeDirectory}/.local/bin/check-nixos-config-updates";
+      };
+    };
+  };
+
+  systemd.user.timers = {
+    "nixos-config-update-check" = {
+      description = "Check NixOS config updates after login and periodically";
+      partOf = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "3min";
+        OnUnitInactiveSec = "30min";
+        AccuracySec = "1min";
+        Unit = "nixos-config-update-check.service";
+      };
+      wantedBy = [ "timers.target" ];
+    };
+  };
+
+  # Update check script (was ~/.local/bin/check-nixos-config-updates)
+  home.file.".local/bin/check-nixos-config-updates" = {
+    executable = true;
+    text = ''
+      #!/run/current-system/sw/bin/sh
+      set -eu
+
+      repo="$HOME/nixos-config"
+      git -C "$repo" fetch --quiet
+      upstream=$(git -C "$repo" rev-parse --abbrev-ref --symbolic-full-name '@{upstream}')
+      count=$(git -C "$repo" rev-list --count "HEAD..$upstream")
+
+      if [ "$count" -gt 0 ]; then
+          summary="$count new commit(s) on $upstream. Review ~/nixos-config; nothing was applied."
+          /run/current-system/sw/bin/busctl --user call \
+              org.freedesktop.Notifications /org/freedesktop/Notifications \
+              org.freedesktop.Notifications Notify susssasa{sv}i \
+              "NixOS config update check" 0 "" "Config updates available" "$summary" 0 0 >/dev/null
+          printf '%s\n' "$summary"
+      else
+          printf 'No new commits on %s.\n' "$upstream"
+      fi
+    '';
+  };
 }

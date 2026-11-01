@@ -3,23 +3,8 @@
 {
   virtualisation.docker.enable = true;
 
+  # System packages that need to be available globally (not just user)
   environment.systemPackages = with pkgs; [
-    git
-    gh
-    docker-compose
-    vim
-    neovim
-    wget
-    curl
-    htop
-    ripgrep
-    fd
-    gcc
-    gnumake
-    python3
-    nodejs_22
-    go
-    rustup
-    opencode
+    # docker-compose is included in docker package
   ];
 }

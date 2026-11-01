@@ -1,11 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  programs.niri.enable = true;
+  # Explicitly enable graphics (steam module sets it but we want it regardless)
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
-  # X11 apps (e.g. Steam) need DISPLAY pointing at the Xwayland provided by
-  # xwayland-satellite, which niri starts on :0.
-  environment.sessionVariables.DISPLAY = ":0";
+  programs.niri.enable = true;
 
   services.greetd = {
     enable = true;
@@ -30,11 +32,6 @@
   };
   services.blueman.enable = true;
 
-
-  # Power profiles (balanced / performance / power-saver).
-  # Toggle with: powerprofilesctl set power-saver
-
-
   # Lid close behavior: suspend-then-hibernate with 1 min delay
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend-then-hibernate";
@@ -47,6 +44,7 @@
   # from hibernate is a cold boot, so no ACPI wake is needed for it.
   # NOTE: if opening the lid no longer wakes the machine from S3 suspend,
   # re-enable only PNP0C0D here.
+  # Idempotent: only disable if currently enabled.
   systemd.services.disable-hibernate-wakeup-sources = {
     description = "Disable ACPI wakeup sources that abort hibernation";
     wantedBy = [ "multi-user.target" ];
@@ -55,10 +53,10 @@
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = pkgs.writeShellScript "disable-hibernate-wakeup" ''
-        echo disabled > /sys/devices/platform/PNP0C0D:00/power/wakeup  # lid
-        echo disabled > /sys/devices/platform/PNP0C0C:00/power/wakeup  # power button
-        echo GPP1 > /proc/acpi/wakeup
-        echo GP17 > /proc/acpi/wakeup
+        grep -q "enabled" /sys/devices/platform/PNP0C0D:00/power/wakeup 2>/dev/null && echo disabled > /sys/devices/platform/PNP0C0D:00/power/wakeup  # lid
+        grep -q "enabled" /sys/devices/platform/PNP0C0C:00/power/wakeup 2>/dev/null && echo disabled > /sys/devices/platform/PNP0C0C:00/power/wakeup  # power button
+        grep -q "GPP1.*enabled" /proc/acpi/wakeup 2>/dev/null && echo GPP1 > /proc/acpi/wakeup
+        grep -q "GP17.*enabled" /proc/acpi/wakeup 2>/dev/null && echo GP17 > /proc/acpi/wakeup
       '';
     };
   };
@@ -98,7 +96,7 @@
     pamixer
     xdg-utils
     waypaper
-    swaybg
+    # swaybg removed - waypaper uses awww backend
     # Polkit agent
     polkit_gnome
   ];

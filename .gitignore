@@ -1,0 +1,16 @@
+# Build artifacts
+/result
+/result-*
+
+# Nix store
+/nix
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

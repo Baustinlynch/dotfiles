@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # NixOS Config
 
 Flake-based NixOS configuration for Dell Inspiron 15 3525 (AMD Ryzen, Radeon graphics).
@@ -35,7 +34,7 @@ the repo file, then `git add` and rebuild to apply.
 xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
 ```
 
-Used for: waybar, fuzzel, mako.
+Used for: waybar, fuzzel, mako, niri, alacritty.
 
 **Mutable** — symlink points at the repo file directly, so the app's own writes land
 in the repo and show up in `git diff`. Content is *not* captured by the Nix
@@ -75,7 +74,4 @@ gitleaks git . --redact --no-banner -v     # or the `secrets` fish alias
 
 A false positive goes in `.gitleaks.toml` as an allowlist entry — not into a
 `--no-verify` habit. Note gitleaks ships allowlist entries for well-known example
-keys (e.g. AWS's `AKIAIOSFODNN7EXAMPLE`), so that string won't trip the hook.
-=======
-my Nixos Config
->>>>>>> 3cea4d0a26c51069470196dde28d6eb55eff3d73
+keys (e.g. AWS's `AKIAIO...MPLE`), so that string won't trip the hook.
