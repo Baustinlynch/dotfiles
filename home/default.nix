@@ -37,18 +37,13 @@
       interactiveShellInit = ''
         set -g fish_greeting ""
         # ~/.local/bin is now on PATH via home.sessionPath
-        # Launch hyfetch only on login shells (not every tmux pane/nested shell)
-        if status is-login
+        # Launch hyfetch only on login shells (not every tmux pane/nested shell),
+        # and only when the terminal is alacritty (dotfiles/alacritty sets TERM=alacritty).
+        if status is-login; and string match -q "*alacritty*" "$TERM"
           hyfetch
         end
       '';
-      # Additional condition to run hyfetch only in alacritty terminal
-      # This checks if the terminal program is alacritty
-      functions --on-event fish_prompt; and begin
-        if string match -q "*alacritty*" "$TERM"
-          hyfetch
-        end
-      end};
+    };
 
   programs.zsh = {
     enable = true;
