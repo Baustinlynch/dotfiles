@@ -39,7 +39,7 @@
         # ~/.local/bin is now on PATH via home.sessionPath
         # Launch hyfetch only on login shells (not every tmux pane/nested shell),
         # and only when the terminal is alacritty (dotfiles/alacritty sets TERM=alacritty).
-        if status is-login; and string match -q "*alacritty*" "$TERM"
+        if status is-login; or string match -q "*alacritty*" "$TERM"
           hyfetch
         end
       '';
