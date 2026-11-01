@@ -24,20 +24,20 @@
     };
   };
 
-  programs.fish = {
-    enable = true;
-    shellAliases = {
-      ll = "ls -l";
-      g = "git";
-      rebuild = "cd ~/nixos-config; and nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
-      secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
-    };
-    interactiveShellInit = ''
-      set -g fish_greeting ""
-      # Add cargo/npm-style user bins if they exist.
-      fish_add_path --global ~/.local/bin
-    '';
-  };
+  programs.fish = {enable = true;
+      shellAliases = {
+        ll = "ls -l";
+        g = "git";
+        rebuild = "cd ~/nixos-config; and nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+        secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
+      };
+      interactiveShellInit = ''
+        set -g fish_greeting ""
+        # Add cargo/npm-style user bins if they exist.
+        fish_add_path --global ~/.local/bin
+        # Launch hyfetch on terminal startup
+        hyfetch
+      '';};
 
   programs.zsh = {
     enable = true;
