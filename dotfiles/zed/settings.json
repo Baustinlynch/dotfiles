@@ -2,7 +2,7 @@
   "agent_servers": {
     "opencode-v2": {
       "default_config_options": {
-        "model": "opencode/glm-5.3-flash-free"
+        "model": "opencode/beam-free"
       },
       "type": "registry"
     }
