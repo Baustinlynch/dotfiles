@@ -83,3 +83,10 @@ echo ""
 git commit -m "$commit_msg"
 
 echo "✓ Committed with AI-generated message."
+
+# Push the commit
+echo ""
+echo "Pushing..."
+git push
+
+echo "✓ Pushed."
