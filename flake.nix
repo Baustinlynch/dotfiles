@@ -27,6 +27,11 @@
       url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Stylix theming.
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -38,6 +43,7 @@
       zen-browser,
       onenote-linux,
       helium,
+      stylix,
       ...
     }:
     let
@@ -56,6 +62,7 @@
         inherit system;
         modules = [
           ./hosts/laptop/configuration.nix
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = [ hermes-agent.overlays.default ];

@@ -20,6 +20,16 @@ in
 
   programs.home-manager.enable = true;
 
+  # Stylix: disable targets whose config files we manage manually (static or
+  # mutable dotfiles) to avoid conflicting declarations.
+  stylix.targets.alacritty.enable = false;
+  stylix.targets.waybar.enable = false;
+  stylix.targets.fuzzel.enable = false;
+  stylix.targets.mako.enable = false;
+  stylix.targets.btop.enable = false;
+  stylix.targets.obsidian.enable = false;
+  stylix.targets.zed.enable = false;
+
   programs.git = {
     enable = true;
     settings.user.name = "brenden";

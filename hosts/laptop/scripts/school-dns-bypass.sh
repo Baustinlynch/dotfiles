@@ -15,8 +15,9 @@ ACTION="$2"
 SCHOOL_SSID="LT_OPEN"
 
 # Get the active connection name on this interface
-ACTIVE_CONN=$(nmcli -g NAME,DEVICE connection show --active 2>/dev/null \
-    | awk -F: -v iface="$IFACE" '$2 == iface {print $1; exit}')
+# (grep instead of awk: awk may not be installed on minimal systems)
+ACTIVE_CONN=$(nmcli -t -f NAME,DEVICE connection show --active 2>/dev/null \
+    | grep ":${IFACE}$" | head -1 | cut -d: -f1)
 
 apply_school_dns() {
     logger "school-dns-bypass: on $SCHOOL_SSID, forcing public DNS"
