@@ -381,8 +381,9 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Mod+Z hotkey-overlay-title="Launch Zed Editor" { spawn "Zed"; }
-    Mod+B hotkey-overlay-title="Launch Zen Browser" { spawn "Zen-Browser"; }
+    Mod+Z hotkey-overlay-title="Launch Zed Editor" { spawn "zeditor"; }
+    Mod+B hotkey-overlay-title="Launch Zen Browser" { spawn "zen-beta"; }
+    Mod+O hotkey-overlay-title="Launch Obsidian" { spawn "obsidian"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -393,7 +394,7 @@ binds {
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
     // "-l 1.0" limits the volume to 100%.
-    XF86Calculator allow-when-locked=true hotkey-overlay-title="Calculator" { spawn "gnome-calculator"; }
+    XF86Calculator repeat=false allow-when-locked=true hotkey-overlay-title="Calculator" { spawn "alacritty" "-e" "qcalc"; }
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
@@ -415,7 +416,7 @@ binds {
     // Open/close the Overview: a zoomed-out view of workspaces and windows.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
-    Mod+O repeat=false { toggle-overview; }
+    Mod+Shift+O repeat=false { toggle-overview; }
 
     Mod+Q repeat=false { close-window; }
 
@@ -609,6 +610,9 @@ binds {
     // Finer height adjustments when in column with other windows.
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Type an em-dash into the focused window (requires wtype).
+    Ctrl+Alt+Minus { spawn "wtype" "—"; }
 
     // Move the focused window between the floating and the tiling layout.
     Mod+V       { toggle-window-floating; }

@@ -22,6 +22,11 @@
       url = "github:Baustinlynch/onenote-linux";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Helium Browser (not packaged in nixpkgs).
+    helium = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -32,6 +37,7 @@
       hermes-agent,
       zen-browser,
       onenote-linux,
+      helium,
       ...
     }:
     let
@@ -67,6 +73,8 @@
             environment.systemPackages = [
               zen-browser.packages.${system}.default
               onenote-linux.packages.${system}.default
+              helium.packages.${system}.default
+              nixpkgs.legacyPackages.${system}.qdirstat
             ];
           }
         ];

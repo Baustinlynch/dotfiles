@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "helium": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793456298,
+        "narHash": "sha256-BN4iu3uxY/JXBSTRytmVrLrpwt1rnuTp8Se6WWbHnk0=",
+        "owner": "oxcl",
+        "repo": "nix-flake-helium-browser",
+        "rev": "0a71a74d045e82124cb69f5c590bdfcf027d52ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxcl",
+        "repo": "nix-flake-helium-browser",
+        "type": "github"
+      }
+    },
     "hermes-agent": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -34,11 +54,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1793607025,
-        "narHash": "sha256-hkNnwUe9p8420ghrlKe7wKr2/6KN7cA4DgRm+Aj7i6I=",
+        "lastModified": 1793626547,
+        "narHash": "sha256-gB7U+rTwo+ppnnOl268uRVJuH9+DTFMNRG1XK2M3O5c=",
         "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "30ee54ee013da43a907661567b48f1481c45fd5f",
+        "rev": "fbf6c6c91d8a9ce3008e05c4b51ca60ad05bb85f",
         "type": "github"
       },
       "original": {
@@ -235,6 +255,7 @@
     },
     "root": {
       "inputs": {
+        "helium": "helium",
         "hermes-agent": "hermes-agent",
         "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs",
@@ -293,11 +314,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793498088,
-        "narHash": "sha256-1MkvkLk4WEJkPrKvCZa3wapvXmdmNAgjh7Ap97GUqVQ=",
+        "lastModified": 1793615807,
+        "narHash": "sha256-2sHhKvrX5D2s8mFlC1hlffsKZQHZv73ObxReKQ6ESXk=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "536b03dea1ab7460afd44565e81f0a72c371c70f",
+        "rev": "1add15a3a5188e584db1f543bb8b313cc6e1de99",
         "type": "github"
       },
       "original": {

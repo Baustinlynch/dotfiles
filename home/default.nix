@@ -1,5 +1,18 @@
 { config, pkgs, ... }:
 
+let
+  # qcalc: terminal calculator (Rust crate, not packaged in nixpkgs).
+  qcalc = pkgs.rustPlatform.buildRustPackage rec {
+    pname = "qcalc";
+    version = "0.15.4";
+    src = pkgs.fetchCrate {
+      inherit pname version;
+      hash = "sha256-dQ9q15zXy7FcfNpKgF22sVJVdX9khzFAMUDxKGbJxJQ=";
+    };
+    cargoHash = "sha256-UuKmea0SZ4VdA6BJ6czV5nh/6INp5n4yD+x818RQSbU=";
+    doCheck = false;
+  };
+in
 {
   home.username = "brenden";
   home.homeDirectory = "/home/brenden";
@@ -30,7 +43,7 @@
     shellAliases = {
       ll = "ls -l";
       g = "git";
-      rebuild = "cd ~/nixos-config; and git pull; and sudo nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+      rebuild = "cd ~/nixos-config; and git pull; and ~/.local/bin/git-stage-and-check; and sudo nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
       secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
       c = "clear; and hyfetch";
     };
@@ -66,9 +79,10 @@
   };
 
   home.packages = with pkgs; [
-    firefox
+    tor-browser
     btop
     gitleaks
+    wtype
     macchina
     nil
     nixd
@@ -79,9 +93,9 @@
     spotify
     awww # waypaper backend
     hyfetch # shell greeting (fish alias 'c')
-    gnome-calculator # XF86Calculator bind
     opencode-desktop
     opencode # CLI (ai coding agent for the terminal)
+    teams-for-linux
     rpm
     # Dev tools (moved from dev.nix)
     vim
@@ -97,6 +111,7 @@
     nodejs_22
     go
     rustup
+    qcalc
   ];
 
   # --- Dotfiles (real files in ../dotfiles/, symlinked in by Home Manager) ---
@@ -239,5 +254,25 @@
           printf 'No new commits on %s.\n' "$upstream"
       fi
     '';
+  };
+
+  # Git staging helper for rebuild alias
+  home.file.".local/bin/git-stage-and-check" = {
+    executable = true;
+    text = ''
+#!/run/current-system/sw/bin/bash
+set -eu
+
+cd /home/brenden/nixos-config
+
+git pull
+git add .
+
+if git diff --cached --quiet; then
+    echo "Running nixos-rebuild..."
+else
+    echo "Staged changes. Run 'git commit' to commit them."
+fi
+'';
   };
 }
