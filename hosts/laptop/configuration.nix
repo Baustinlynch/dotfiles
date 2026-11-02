@@ -14,6 +14,14 @@
   # corporate 802.1X network when power save / deep LPS kicks in.
   networking.networkmanager.wifi.powersave = false;
 
+  # Bypass school/Tailscale DNS on LT_OPEN WiFi so the captive portal doesn't
+  # kill resolution after the grace period.
+  networking.networkmanager.dispatcherScripts = [
+    {
+      source = ./scripts/school-dns-bypass.sh;
+    }
+  ];
+
   # RTL8821CE stability: disable PCIe ASPM and deep low-power save.
   boot.extraModprobeConfig = ''
     options rtw88_pci disable_aspm=1
@@ -66,6 +74,48 @@
 
   # UK keyboard on TTY as well as X11/Wayland
   console.keyMap = "uk";
+
+  # Stylix theming (base16 scheme; no wallpaper image).
+  stylix = {
+    enable = true;
+    polarity = "dark";
+    base16Scheme = {
+      base00 = "1e1e2e";
+      base01 = "181825";
+      base02 = "313244";
+      base03 = "45475a";
+      base04 = "585b70";
+      base05 = "cdd6f4";
+      base06 = "f5e0dc";
+      base07 = "cdd6f4";
+      base08 = "f38ba8";
+      base09 = "fab387";
+      base0A = "f9e2af";
+      base0B = "a6e3a1";
+      base0C = "94e2d5";
+      base0D = "89b4fa";
+      base0E = "cba6f7";
+      base0F = "f2cdcd";
+    };
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Sans";
+      };
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "DejaVu Serif";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+  };
 
   system.stateVersion = "24.11";
 
