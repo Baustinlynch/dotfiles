@@ -23,7 +23,7 @@ in
   # Stylix: disable targets whose config files we manage manually (static or
   # mutable dotfiles) to avoid conflicting declarations.
   stylix.targets.alacritty.enable = false;
-  stylix.targets.waybar.enable = false;
+  stylix.targets.waybar.enable = true;
   stylix.targets.fuzzel.enable = false;
   stylix.targets.mako.enable = false;
   stylix.targets.btop.enable = false;
@@ -127,7 +127,6 @@ in
   # --- Dotfiles (real files in ../dotfiles/, symlinked in by Home Manager) ---
   # Static: edit file + `git add` + rebuild to apply.
   xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
-  xdg.configFile."waybar/style.css".source = ../dotfiles/waybar/style.css;
   xdg.configFile."fuzzel/fuzzel.ini".source = ../dotfiles/fuzzel/fuzzel.ini;
   xdg.configFile."mako/config".source = ../dotfiles/mako/config;
   xdg.configFile."niri/config.kdl".source = ../dotfiles/niri/config.kdl;
