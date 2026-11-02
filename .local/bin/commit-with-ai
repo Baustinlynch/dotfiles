@@ -73,8 +73,13 @@ if [[ ${#commit_msg} -gt 72 ]]; then
     commit_msg="${commit_msg:0:72}"
 fi
 
+# Show the generated commit message
+echo ""
+echo "Commit message:"
+echo "$commit_msg"
+echo ""
+
 # Commit the changes
-echo "Committing with message: \"$commit_msg\""
 git commit -m "$commit_msg"
 
-echo "Committed with AI-generated message."
+echo "✓ Committed with AI-generated message."
