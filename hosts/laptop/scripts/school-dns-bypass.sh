@@ -2,9 +2,10 @@
 # NetworkManager dispatcher script: bypass school/Tailscale DNS on LT_OPEN WiFi.
 #
 # When connecting to the school network (SSID: LT_OPEN), force public DNS
-# (Cloudflare + Google) so Tailscale's magic DNS (100.100.100.100) doesn't
-# hijack resolution and break when the captive portal blocks Tailscale DERP.
-# When leaving the school network, restore automatic DNS.
+# (Cloudflare + Google) and disable Tailscale DNS management, so Tailscale's
+# magic DNS (100.100.100.100) doesn't hijack resolution and break when the
+# captive portal blocks Tailscale DERP.
+# When leaving the school network, restore Tailscale DNS management.
 
 IFACE="$1"
 ACTION="$2"
@@ -15,12 +16,17 @@ ACTION="$2"
 SCHOOL_SSID="LT_OPEN"
 
 # Get the active connection name on this interface
-# (grep instead of awk: awk may not be installed on minimal systems)
 ACTIVE_CONN=$(nmcli -t -f NAME,DEVICE connection show --active 2>/dev/null \
     | grep ":${IFACE}$" | head -1 | cut -d: -f1)
 
+# Debug output to stderr (captured by nm-dispatcher in journal)
+echo "school-dns-bypass: iface=$IFACE action=$ACTION active=$ACTIVE_CONN" >&2
+
 apply_school_dns() {
-    logger "school-dns-bypass: on $SCHOOL_SSID, forcing public DNS"
+    echo "school-dns-bypass: on $SCHOOL_SSID, forcing public DNS + disabling Tailscale DNS" >&2
+    # Stop Tailscale from overriding DNS
+    tailscale set --accept-dns=false 2>/dev/null || true
+    # Tell NM to use public DNS for this connection
     nmcli connection modify "$SCHOOL_SSID" \
         ipv4.dns "1.1.1.1 8.8.8.8" \
         ipv4.ignore-auto-dns yes \
@@ -32,7 +38,10 @@ apply_school_dns() {
 }
 
 restore_dns() {
-    logger "school-dns-bypass: leaving $SCHOOL_SSID, restoring auto DNS"
+    echo "school-dns-bypass: leaving $SCHOOL_SSID, restoring Tailscale DNS" >&2
+    # Re-enable Tailscale DNS management
+    tailscale set --accept-dns=true 2>/dev/null || true
+    # Restore automatic DNS on the connection
     nmcli connection modify "$SCHOOL_SSID" \
         ipv4.dns "" \
         ipv4.ignore-auto-dns no \
