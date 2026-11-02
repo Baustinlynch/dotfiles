@@ -115,6 +115,7 @@ in
     htop
     ripgrep
     fd
+    jq
     gcc
     gnumake
     python3
@@ -150,6 +151,10 @@ in
   };
   xdg.configFile."btop/btop.conf" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/btop/btop.conf";
+    force = true;
+  };
+  xdg.configFile."btop/themes/catppuccin_latte.theme" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/btop/themes/catppuccin_latte.theme";
     force = true;
   };
 
@@ -268,6 +273,7 @@ in
   # Git staging helper for rebuild alias
   home.file.".local/bin/git-stage-and-check" = {
     executable = true;
+    force = true;
     text = ''
 #!/run/current-system/sw/bin/bash
 set -eu
@@ -275,6 +281,12 @@ set -eu
 cd /home/brenden/nixos-config
 
 git pull
+
+# If there are uncommitted changes, let AI generate and commit a message
+if ! git diff --quiet || ! git diff --cached --quiet; then
+    /home/brenden/nixos-config/.local/bin/commit-with-ai
+fi
+
 git add .
 
 if git diff --cached --quiet; then

@@ -3,15 +3,15 @@
   font-size: 13px;
 }
 window#waybar {
-  background: rgba(30, 30, 46, 0.8);
-  color: #cdd6f4;
+  background: rgba(239, 241, 245, 0.85);
+  color: #4c4f69;
 }
 #workspaces button {
   padding: 0 5px;
-  color: #cdd6f4;
+  color: #4c4f69;
 }
 #workspaces button.active {
-  color: #89b4fa;
+  color: #8839ef;
 }
 #clock, #pulseaudio, #network, #battery, #tray, #custom-power, #custom-network-manager, #custom-power-profile {
   padding: 0 10px;

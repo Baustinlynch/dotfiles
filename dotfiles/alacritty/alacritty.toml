@@ -35,3 +35,29 @@ style = { shape = "Block", blinking = "On" }
 bindings = [
   { key = "Return", mods = "Control|Shift", action = "CreateNewWindow" },
 ]
+
+[colors]
+# Catppuccin Latte
+background = "#eff1f5"
+foreground = "#4c4f69"
+selection = "#bcc0d4"
+search = {
+  active = "#ea76cb",
+  inactive = "#7c829e",
+}
+black = "#4c4f69"
+red = "#d20f39"
+green = "#40a02b"
+yellow = "#df8e1d"
+blue = "#1e66f5"
+magenta = "#ea76cb"
+cyan = "#179299"
+white = "#dce0e8"
+bright_black = "#5c5f77"
+bright_red = "#d20f39"
+bright_green = "#40a02b"
+bright_yellow = "#df8e1d"
+bright_blue = "#1e66f5"
+bright_magenta = "#ea76cb"
+bright_cyan = "#179299"
+bright_white = "#4c4f69"

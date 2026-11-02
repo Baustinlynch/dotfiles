@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+set -eu
+
+repo="/home/brenden/nixos-config"
+cd "$repo"
+
+# Load API key from file if not in environment
+if [[ -z "${OPENROUTER_API_KEY:-}" ]]; then
+    key_file="${XDG_CONFIG_HOME:-$HOME/.config}/openrouter/api_key"
+    if [[ -f "$key_file" ]]; then
+        OPENROUTER_API_KEY=$(cat "$key_file")
+        export OPENROUTER_API_KEY
+    fi
+fi
+
+# Check if there are staged or unstaged changes
+if git diff --quiet && git diff --cached --quiet; then
+    echo "No changes to commit."
+    exit 0
+fi
+
+# Stage all changes if not already staged
+if ! git diff --cached --quiet; then
+    git add .
+fi
+
+# Get the diff
+diff=$(git diff --cached)
+
+# Call OpenRouter API to generate commit message
+# Uses openrouter/free model via OpenRouter's chat completions API
+if [[ -z "${OPENROUTER_API_KEY:-}" ]]; then
+    echo "ERROR: OPENROUTER_API_KEY not set. Create ~/.config/openrouter/api_key or export the variable."
+    exit 1
+fi
+
+response=$(curl -s -X POST "https://openrouter.ai/api/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "HTTP-Referer: https://opencode.ai" \
+  -H "X-Title: NixOS Commit Assistant" \
+  -d "{
+    \"model\": \"openrouter/free\",
+    \"messages\": [
+      {
+        \"role\": \"system\",
+        \"content\": \"You are a commit message generator. Given a git diff, generate a concise commit message (max 50 characters) that summarizes the changes. Do not include any other text. Only output the commit message. You can make a few lines for more details. You can use any standard gitmoji. If the diff is empty, return \"Empty commit\".\"
+      },
+      {
+        \"role\": \"user\",
+        \"content\": \"Generate a commit message for this git diff:\\n\\n${diff}\"
+      }
+    ],
+    \"max_tokens\": 100,
+    \"temperature\": 0.3
+  }")
+
+# Extract the commit message from the response
+# Try jq first if available, otherwise fallback to grep/sed
+if command -v jq >/dev/null 2>&1; then
+    commit_msg=$(echo "$response" | jq -r '.choices[0].message.content // empty' 2>/dev/null | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+else
+    commit_msg=$(echo "$response" | grep -A 1 '"content"' | tail -n 1 | sed 's/.*"\(.*\)"\?,.*/\1/' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+fi
+
+# Fallback if API fails or returns empty
+if [[ -z "$commit_msg" || "$commit_msg" == "null" ]]; then
+    commit_msg="$(git diff --cached --stat | head -n 1 | awk -F' -> ' '{print $1}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//') ($(date +%Y-%m-%d))"
+fi
+
+# Make sure the commit message is not too long
+if [[ ${#commit_msg} -gt 72 ]]; then
+    commit_msg="${commit_msg:0:72}"
+fi
+
+# Commit the changes
+echo "Committing with message: \"$commit_msg\""
+git commit -m "$commit_msg"
+
+echo "Committed with AI-generated message."

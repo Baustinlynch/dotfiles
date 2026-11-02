@@ -6,6 +6,7 @@ NixOS flake configuration for a Dell Inspiron 15 3525. Single host: `laptop` (`x
 
 - Apply to the laptop: `sudo nixos-rebuild switch --flake .#laptop`
   (fish alias `rebuild` = `sudo nixos-rebuild switch --flake ~/nixos-config#laptop`)
+- **Rebuild now auto-commits with AI**: `rebuild` detects uncommitted changes, stages them, sends the diff to OpenRouter (`openrouter/free`) for a commit message, commits, then rebuilds. Set `OPENROUTER_API_KEY` in `~/.config/openrouter/api_key`.
 - Test in a VM: `nixos-rebuild build-vm --flake .#laptop` (NixOS host only)
 - Regenerate hardware detection: `sudo nixos-generate-config --show-hardware-config > hosts/laptop/hardware-configuration.nix`
 - Full secret history scan: `gitleaks git . --redact --no-banner -v` (fish alias `secrets`)
