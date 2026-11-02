@@ -42,8 +42,8 @@ background = "#eff1f5"
 foreground = "#4c4f69"
 selection = "#bcc0d4"
 search = {
-  active = "#ea76cb",
-  inactive = "#7c829e",
+  matches = { foreground = "#4c4f69", background = "#ea76cb" }
+  focused_match = { foreground = "#4c4f69", background = "#7c829e" }
 }
 black = "#4c4f69"
 red = "#d20f39"

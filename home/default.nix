@@ -22,7 +22,7 @@ in
 
   # Stylix: disable targets whose config files we manage manually (static or
   # mutable dotfiles) to avoid conflicting declarations.
-  stylix.targets.alacritty.enable = false;
+  stylix.targets.alacritty.enable = true;
   stylix.targets.waybar.enable = true;
   stylix.targets.fuzzel.enable = false;
   stylix.targets.mako.enable = false;
@@ -53,7 +53,7 @@ in
     shellAliases = {
       ll = "ls -l";
       g = "git";
-      rebuild = "cd ~/nixos-config; and git pull; and ~/.local/bin/git-stage-and-check; and sudo nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+      rebuild = "cd ~/nixos-config; and git pull; and git add .; and ~/.local/bin/git-stage-and-check; and sudo nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
       secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
       c = "clear; and hyfetch";
     };
@@ -131,7 +131,26 @@ in
   xdg.configFile."fuzzel/fuzzel.ini".source = ../dotfiles/fuzzel/fuzzel.ini;
   xdg.configFile."mako/config".source = ../dotfiles/mako/config;
   xdg.configFile."niri/config.kdl".source = ../dotfiles/niri/config.kdl;
-  xdg.configFile."alacritty/alacritty.toml".source = ../dotfiles/alacritty/alacritty.toml;
+  programs.alacritty.enable = true;
+  programs.alacritty.package = null;
+  programs.alacritty.settings = {
+    general = {
+      import = [];
+      live_config_reload = true;
+    };
+    terminal.shell = { program = "fish"; };
+    env.TERM = "alacritty";
+    window = {
+      padding = { x = 6; y = 6; };
+      decorations = "None";
+      dynamic_title = true;
+    };
+    scrolling.history = 10000;
+    cursor.style = { shape = "Block"; blinking = "On"; };
+    keyboard.bindings = [
+      { key = "Return"; mods = "Control|Shift"; action = "CreateNewWindow"; }
+    ];
+  };
   xdg.configFile."mimeapps.list".source = ../dotfiles/mimeapps.list;
   xdg.configFile."hyfetch.json".source = ../dotfiles/hyfetch.json;
 
