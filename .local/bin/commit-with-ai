@@ -34,31 +34,38 @@ if [[ -z "${OPENROUTER_API_KEY:-}" ]]; then
     exit 1
 fi
 
+# Build the JSON payload properly using jq to escape the diff
+json_payload=$(jq -n --arg diff "$diff" '{
+  model: "openrouter/free",
+  messages: [
+    {
+      role: "system",
+      content: "You are a commit message generator. Given a git diff, output ONLY a single commit message (max 50 chars). No explanation, no reasoning, no extra text. Just the commit message line. Use conventional commits format. If the diff is empty, output: Empty commit."
+    },
+    {
+      role: "user",
+      content: ("Generate a commit message for this git diff:\n\n" + $diff)
+    }
+  ],
+  max_tokens: 2000,
+  temperature: 0.3
+}')
+
 response=$(curl -s -X POST "https://openrouter.ai/api/v1/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENROUTER_API_KEY" \
   -H "HTTP-Referer: https://opencode.ai" \
   -H "X-Title: NixOS Commit Assistant" \
-  -d "{
-    \"model\": \"openrouter/free\",
-    \"messages\": [
-      {
-        \"role\": \"system\",
-        \"content\": \"You are a commit message generator. Given a git diff, generate a concise commit message (max 50 characters) that summarizes the changes. Do not include any other text. Only output the commit message. You can make a few lines for more details. You can use any standard gitmoji. If the diff is empty, return \"Empty commit\".\"
-      },
-      {
-        \"role\": \"user\",
-        \"content\": \"Generate a commit message for this git diff:\\n\\n${diff}\"
-      }
-    ],
-    \"max_tokens\": 100,
-    \"temperature\": 0.3
-  }")
+  -d "$json_payload")
 
 # Extract the commit message from the response
 # Try jq first if available, otherwise fallback to grep/sed
 if command -v jq >/dev/null 2>&1; then
-    commit_msg=$(echo "$response" | jq -r '.choices[0].message.content // empty' 2>/dev/null | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+    commit_msg=$(echo "$response" | jq -r '.choices[0].message.content // .choices[0].message.reasoning // empty' 2>/dev/null | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+    # If the content is reasoning text, try to extract a commit-like message from it
+    if [[ -z "$commit_msg" || "$commit_msg" == "null" ]]; then
+        commit_msg=$(echo "$response" | jq -r '.choices[0].message.reasoning // empty' 2>/dev/null | tail -n 1 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+    fi
 else
     commit_msg=$(echo "$response" | grep -A 1 '"content"' | tail -n 1 | sed 's/.*"\(.*\)"\?,.*/\1/' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
 fi
