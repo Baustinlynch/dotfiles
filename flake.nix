@@ -37,6 +37,11 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # LLM Agents - provides Ori CLI and coding agents (Claude Code, OpenCode, etc.)
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -50,6 +55,7 @@
       helium,
       slick,
       stylix,
+      llm-agents,
       ...
     }:
     let
@@ -92,6 +98,7 @@
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
               slick.packages.${system}.default
+              llm-agents.packages.${system}.ori
               pkgs.qdirstat
               pkgs.pandoc
               pkgs.slack
@@ -125,6 +132,7 @@
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
               slick.packages.${system}.default
+              llm-agents.packages.${system}.ori
               pkgs.qdirstat
               pkgs.pandoc
               pkgs.slack
