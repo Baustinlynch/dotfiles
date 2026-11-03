@@ -8,7 +8,7 @@
     ../../modules/nixos/hardware/touchpad.nix
   ];
 
-  networking.hostName = "inspiron-3525";
+  networking.hostName = "breadlaptop-nixos";
   networking.networkmanager.enable = true;
   # Disable Wi-Fi power saving: the RTL8821CE (rtw88) drops off the
   # corporate 802.1X network when power save / deep LPS kicks in.
