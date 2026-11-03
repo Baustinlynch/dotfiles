@@ -54,6 +54,7 @@
     }:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system} // { config.allowUnfree = true; };
     in
     {
       # Formatter for nix files
@@ -84,13 +85,15 @@
           # Zen Browser comes from its own flake (not in nixpkgs).
           # Slick, a Slack client mod (bring your own Slack).
           {
+            nixpkgs.config.allowUnfree = true;
             environment.systemPackages = [
               zen-browser.packages.${system}.default
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
               slick.packages.${system}.default
-              nixpkgs.legacyPackages.${system}.qdirstat
-              nixpkgs.legacyPackages.${system}.pandoc
+              pkgs.qdirstat
+              pkgs.pandoc
+              pkgs.slack
             ];
           }
         ];
@@ -119,9 +122,10 @@
               zen-browser.packages.${system}.default
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
-              nixpkgs.legacyPackages.${system}.qdirstat
-              nixpkgs.legacyPackages.${system}.pandoc
               slick.packages.${system}.default
+              pkgs.qdirstat
+              pkgs.pandoc
+              pkgs.slack
             ];
           }
         ];
