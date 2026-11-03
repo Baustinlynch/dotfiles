@@ -11,7 +11,7 @@
   "agent": {
     "default_model": {
       "provider": "openrouter",
-      "model": "openrouter/free",
+      "model": "openrouter/auto",
       "enable_thinking": true
     },
     "favorite_models": [],

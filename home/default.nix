@@ -127,6 +127,9 @@ in
 
   # --- Dotfiles (real files in ../dotfiles/, symlinked in by Home Manager) ---
   # Static: edit file + `git add` + rebuild to apply.
+  # Enable Home Manager's waybar module so Stylix can generate a themed style.css.
+  programs.waybar.enable = true;
+  programs.waybar.systemd.enable = false;
   xdg.configFile."waybar/config".source = ../dotfiles/waybar/config;
   xdg.configFile."fuzzel/fuzzel.ini".source = ../dotfiles/fuzzel/fuzzel.ini;
   xdg.configFile."mako/config".source = ../dotfiles/mako/config;

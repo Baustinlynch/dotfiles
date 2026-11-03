@@ -82,6 +82,37 @@
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
               nixpkgs.legacyPackages.${system}.qdirstat
+              nixpkgs.${system}.pandoc
+            ];
+          }
+        ];
+      };
+
+      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./hosts/desktop/configuration.nix
+          stylix.nixosModules.stylix
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [ hermes-agent.overlays.default ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.brenden = {
+              imports = [
+                hermes-agent.homeManagerModules.default
+                ./home
+              ];
+            };
+          }
+          # Zen Browser comes from its own flake (not in nixpkgs).
+          {
+            environment.systemPackages = [
+              zen-browser.packages.${system}.default
+              onenote-linux.packages.${system}.default
+              helium.packages.${system}.default
+              nixpkgs.legacyPackages.${system}.qdirstat
+              nixpkgs.${system}.pandoc
             ];
           }
         ];

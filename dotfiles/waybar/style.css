@@ -11,7 +11,7 @@ window#waybar {
   color: #4c4f69;
 }
 #workspaces button.active {
-  color: #8839ef;
+  color: #ca9ee6;
 }
 #clock, #pulseaudio, #network, #battery, #tray, #custom-power, #custom-network-manager, #custom-power-profile {
   padding: 0 10px;

@@ -86,18 +86,20 @@
       base03 = "9ca0b0";
       base04 = "6c6f85";
       base05 = "4c4f69";
-      base06 = "dc8a78";
-      base07 = "7287fd";
-      base08 = "d20f39";
-      base09 = "fe640b";
-      base0A = "df8e1d";
-      base0B = "40a02b";
-      base0C = "179299";
-      base0D = "1e66f5";
-      base0E = "8839ef";
-      base0F = "dd7878";
+      # Pastel accents (Catppuccin Frappe) for a softer look
+      base06 = "f2d5cf";
+      base07 = "babbf1";
+      base08 = "e78284";
+      base09 = "ef9f76";
+      base0A = "e5c890";
+      base0B = "a6d189";
+      base0C = "81c8be";
+      base0D = "8caaee";
+      base0E = "ca9ee6";
+      base0F = "eebebe";
     };
     opacity.terminal = 0.95;
+    opacity.desktop = 0.85;
     fonts.sizes.terminal = 10.5;
     fonts = {
       monospace = {
