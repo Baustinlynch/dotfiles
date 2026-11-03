@@ -54,7 +54,6 @@
       base03 = "9ca0b0";
       base04 = "6c6f85";
       base05 = "4c4f69";
-      # Pastel accents (Catppuccin Frappe) for a softer look
       base06 = "f2d5cf";
       base07 = "babbf1";
       base08 = "e78284";

@@ -175,8 +175,8 @@ in
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/btop/btop.conf";
     force = true;
   };
-  xdg.configFile."btop/themes/catppuccin_latte.theme" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/btop/themes/catppuccin_latte.theme";
+  xdg.configFile."btop/themes/catppuccin_frappe.theme" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/btop/themes/catppuccin_frappe.theme";
     force = true;
   };
 
