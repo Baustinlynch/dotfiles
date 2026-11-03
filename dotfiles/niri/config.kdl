@@ -343,6 +343,12 @@ window-rule {
     open-floating true
 }
 
+// Make Obsidian semi-transparent at the compositor level.
+window-rule {
+    match app-id="obsidian"
+    opacity 0.92
+}
+
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {

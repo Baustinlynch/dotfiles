@@ -171,12 +171,6 @@ in
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/obsidian/obsidian.json";
     force = true;
   };
-  # Obsidian CSS snippet for transparency — lives in dotfiles, copied into
-  # the vault at session start via obsidian-css.service.
-  xdg.configFile."obsidian/transparent-ui.css" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/obsidian/transparent-ui.css";
-    force = true;
-  };
   xdg.configFile."btop/btop.conf" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/btop/btop.conf";
     force = true;
@@ -231,18 +225,6 @@ in
         RemainAfterExit = true;
         # Retry so the session (outputs, sockets) has time to settle after login.
         ExecStart = "${pkgs.bash}/bin/bash -lc 'for i in 1 2 3 4 5; do ${pkgs.waypaper}/bin/waypaper --restore && break; sleep 2; done'";
-      };
-      Install.WantedBy = [ "graphical-session.target" ];
-    };
-
-    "obsidian-css" = {
-      Unit.Description = "Copy Obsidian transparency CSS snippet into vault";
-      # Run after Obsidian has had a chance to create the vault, but before
-      # Obsidian's UI loads the snippet list (CSS snippets are lazy-loaded).
-      Unit.After = [ "graphical-session.target" ];
-      Service = {
-        Type = "oneshot";
-        ExecStart = "${config.home.homeDirectory}/.local/bin/ensure-obsidian-css.sh";
       };
       Install.WantedBy = [ "graphical-session.target" ];
     };
@@ -310,14 +292,7 @@ in
     '';
   };
 
-  # Ensure Obsidian transparency CSS snippet exists in the vault on session start.
-  home.file.".local/bin/ensure-obsidian-css.sh" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/scripts/ensure-obsidian-css.sh";
-    force = true;
-    executable = true;
-  };
-
-  # Git staging helper for rebuild alias
+  
   home.file.".local/bin/git-stage-and-check" = {
     executable = true;
     force = true;

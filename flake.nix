@@ -27,6 +27,11 @@
       url = "github:oxcl/nix-flake-helium-browser";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Slick, a Slack client mod (bring your own Slack).
+    slick = {
+      url = "github:3kh0/slick";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Stylix theming.
     stylix = {
       url = "github:nix-community/stylix";
@@ -43,6 +48,7 @@
       zen-browser,
       onenote-linux,
       helium,
+      slick,
       stylix,
       ...
     }:
@@ -76,11 +82,13 @@
             };
           }
           # Zen Browser comes from its own flake (not in nixpkgs).
+          # Slick, a Slack client mod (bring your own Slack).
           {
             environment.systemPackages = [
               zen-browser.packages.${system}.default
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
+              slick.packages.${system}.default
               nixpkgs.legacyPackages.${system}.qdirstat
               nixpkgs.legacyPackages.${system}.pandoc
             ];
@@ -113,6 +121,7 @@
               helium.packages.${system}.default
               nixpkgs.legacyPackages.${system}.qdirstat
               nixpkgs.legacyPackages.${system}.pandoc
+              slick.packages.${system}.default
             ];
           }
         ];

@@ -425,6 +425,7 @@
         "home-manager": "home-manager_2",
         "nixpkgs": "nixpkgs",
         "onenote-linux": "onenote-linux",
+        "slick": "slick",
         "stylix": "stylix",
         "zen-browser": "zen-browser"
       }
@@ -444,6 +445,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "slick": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793462608,
+        "narHash": "sha256-fvL7D35FUH90gHqjHVKFkAmokRisns57LJcZOQvzX1g=",
+        "owner": "3kh0",
+        "repo": "slick",
+        "rev": "5306955459407d849be6e68fde853fe8e202b8f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "3kh0",
+        "repo": "slick",
         "type": "github"
       }
     },
