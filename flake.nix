@@ -54,7 +54,7 @@
     }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system} // { config.allowUnfree = true; };
+      pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       # Formatter for nix files
@@ -118,6 +118,7 @@
           }
           # Zen Browser comes from its own flake (not in nixpkgs).
           {
+            nixpkgs.config.allowUnfree = true;
             environment.systemPackages = [
               zen-browser.packages.${system}.default
               onenote-linux.packages.${system}.default
