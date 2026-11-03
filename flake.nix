@@ -82,7 +82,7 @@
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
               nixpkgs.legacyPackages.${system}.qdirstat
-              nixpkgs.${system}.pandoc
+              nixpkgs.legacyPackages.${system}.pandoc
             ];
           }
         ];
@@ -112,7 +112,7 @@
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
               nixpkgs.legacyPackages.${system}.qdirstat
-              nixpkgs.${system}.pandoc
+              nixpkgs.legacyPackages.${system}.pandoc
             ];
           }
         ];
