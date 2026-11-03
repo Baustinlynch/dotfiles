@@ -54,7 +54,6 @@
     }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system} // { config.allowUnfree = true; };
     in
     {
       # Formatter for nix files
@@ -84,7 +83,9 @@
           }
           # Zen Browser comes from its own flake (not in nixpkgs).
           # Slick, a Slack client mod (bring your own Slack).
-          {
+          # Function module: `pkgs` is the system pkgs instance, which has
+          # allowUnfree set (below and in configuration.nix).
+          ({ pkgs, ... }: {
             nixpkgs.config.allowUnfree = true;
             environment.systemPackages = [
               zen-browser.packages.${system}.default
@@ -95,7 +96,7 @@
               pkgs.pandoc
               pkgs.slack
             ];
-          }
+          })
         ];
       };
 
@@ -117,7 +118,7 @@
             };
           }
           # Zen Browser comes from its own flake (not in nixpkgs).
-          {
+          ({ pkgs, ... }: {
             nixpkgs.config.allowUnfree = true;
             environment.systemPackages = [
               zen-browser.packages.${system}.default
@@ -128,7 +129,7 @@
               pkgs.pandoc
               pkgs.slack
             ];
-          }
+          })
         ];
       };
     };
