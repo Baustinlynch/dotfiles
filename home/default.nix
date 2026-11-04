@@ -103,12 +103,8 @@ in
     spotify
     awww # waypaper backend
     hyfetch # shell greeting (fish alias 'c')
-    # opencode-desktop
-    # opencode # CLI (ai coding agent for the terminal)
-    #   ^ Temporarily disabled: nixpkgs-unstable opencode 2.2.5 hangs rebuilding
-    #   `opencode-node_modules` (bun install needs network during build; broken on
-    #   this TLS-intercepted network, see NixOS/nixpkgs#582673). Re-add once fixed
-    #   or install opencode standalone via `nix run github:anomalyco/opencode`.
+    opencode-desktop
+    opencode # CLI (ai coding agent for the terminal)
     teams-for-linux
     rpm
     # Dev tools (moved from dev.nix)
