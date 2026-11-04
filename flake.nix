@@ -66,6 +66,34 @@
     }:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+
+      # Slick pins its node-modules hash in packaging/nix/pins.json. Upstream's
+      # committed hash sometimes doesn't match the actual `bun install` output,
+      # causing a fixed-output hash mismatch on rebuild (verified mismatch at
+      # slick rev 7237dffe). We patch pins.json with the real hash so `slick-fixed`
+      # builds even when `nix flake update` bumps the slick input.
+      slickSrc = builtins.fetchGit {
+        url = "https://github.com/3kh0/slick";
+        rev = "7237dffe1f71c75370a10654c3ac6941e44952b9";
+        narHash = "sha256-e77PaCLJa0NqnRHrQEvgmmG7lI+J39yjvefBlnLiqzs=";
+      };
+      # Create corrected pins.json using writeText to avoid sandbox permission issues
+      correctedPins = pkgs.writeText "corrected-pins.json" ''
+        {
+          "build": 144,
+          "electron": 43,
+          "nodeModulesHash": "sha256-Bw1wYMOcdV1ECzVfdyu6NBcTI9v2H/YwYJR7Lu4YvP0="
+        }
+      '';
+      slickSrcPatched = pkgs.runCommand "slick-src-patched" { } ''
+        cp -r ${slickSrc}/. $out/
+        chmod -R u+w $out
+        printf '%s\n' '{' '  "build": 144,' '  "electron": 43,' '  "nodeModulesHash": "sha256-Bw1wYMOcdV1ECzVfdyu6NBcTI9v2H/YwYJR7Lu4YvP0="' '}' > $out/packaging/nix/pins.json
+      '';
+      slick-fixed = pkgs.callPackage (slickSrcPatched + "/packaging/nix") {
+        src = slickSrcPatched;
+      };
     in
     {
       # Formatter for nix files
@@ -104,7 +132,7 @@
               zen-browser.packages.${system}.default
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
-              slick.packages.${system}.default
+              slick-fixed
               llm-agents.packages.${system}.ori
               nur.legacyPackages.x86_64-linux.repos.mio.autodesk-fusion-360
               pkgs.qdirstat
@@ -140,7 +168,7 @@
               zen-browser.packages.${system}.default
               onenote-linux.packages.${system}.default
               helium.packages.${system}.default
-              slick.packages.${system}.default
+              slick-fixed
               llm-agents.packages.${system}.ori
               nur.legacyPackages.x86_64-linux.repos.mio.autodesk-fusion-360
               pkgs.qdirstat

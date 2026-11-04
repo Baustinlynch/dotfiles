@@ -3,15 +3,38 @@
   "agent_servers": {
     "opencode-v2": {
       "default_config_options": {
-        "model": "opencode/beam-free"
+        "model": "openrouter/openrouter/auto"
       },
       "type": "registry"
     }
   },
   "agent": {
+    "tool_permissions": {
+      "tools": {
+        "terminal": {
+          "default": "allow",
+          "always_allow": [
+            {
+              "pattern": "^ps\\s+aux(\\s|$)"
+            },
+            {
+              "pattern": "^grep\\b"
+            },
+            {
+              "pattern": "^cd\\s+/home/brenden/Documents/email-router(\\s|$)"
+            }
+          ]
+        }
+      }
+    },
+    "play_sound_when_agent_done": "always",
+    "notify_when_agent_waiting": "all_screens",
+    "sandbox_permissions": {
+      "allow_all_hosts": true
+    },
     "default_model": {
       "provider": "openrouter",
-      "model": "openrouter/auto",
+      "model": "openrouter/free",
       "enable_thinking": true
     },
     "favorite_models": [],

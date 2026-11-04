@@ -53,7 +53,7 @@ in
     shellAliases = {
       ll = "ls -l";
       g = "git";
-      rebuild = "cd ~/nixos-config; and git pull; and git add .; and ~/.local/bin/git-stage-and-check; and sudo nix flake update; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+      rebuild = "cd ~/nixos-config; and git pull; and git add .; and sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
       secrets = "cd ~/nixos-config; and gitleaks git . --redact --no-banner -v";
       c = "clear; and hyfetch";
     };
@@ -103,8 +103,12 @@ in
     spotify
     awww # waypaper backend
     hyfetch # shell greeting (fish alias 'c')
-    opencode-desktop
-    opencode # CLI (ai coding agent for the terminal)
+    # opencode-desktop
+    # opencode # CLI (ai coding agent for the terminal)
+    #   ^ Temporarily disabled: nixpkgs-unstable opencode 2.2.5 hangs rebuilding
+    #   `opencode-node_modules` (bun install needs network during build; broken on
+    #   this TLS-intercepted network, see NixOS/nixpkgs#582673). Re-add once fixed
+    #   or install opencode standalone via `nix run github:anomalyco/opencode`.
     teams-for-linux
     rpm
     # Dev tools (moved from dev.nix)
@@ -292,30 +296,5 @@ in
     '';
   };
 
-  
-  home.file.".local/bin/git-stage-and-check" = {
-    executable = true;
-    force = true;
-    text = ''
-#!/run/current-system/sw/bin/bash
-set -eu
 
-cd /home/brenden/nixos-config
-
-git pull
-
-# If there are uncommitted changes, let AI generate and commit a message
-if ! git diff --quiet || ! git diff --cached --quiet; then
-    /home/brenden/nixos-config/.local/bin/commit-with-ai
-fi
-
-git add .
-
-if git diff --cached --quiet; then
-    echo "Running nixos-rebuild..."
-else
-    echo "Staged changes. Run 'git commit' to commit them."
-fi
-'';
-  };
 }
