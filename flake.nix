@@ -42,6 +42,11 @@
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Nix User Repository - provides community packages not in nixpkgs.
+    nur = {
+      url = "github:nix-community/nur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -56,6 +61,7 @@
       slick,
       stylix,
       llm-agents,
+      nur,
       ...
     }:
     let
@@ -75,6 +81,7 @@
         modules = [
           ./hosts/laptop/configuration.nix
           stylix.nixosModules.stylix
+          nur.modules.nixos.default
           home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = [ hermes-agent.overlays.default ];
@@ -99,6 +106,7 @@
               helium.packages.${system}.default
               slick.packages.${system}.default
               llm-agents.packages.${system}.ori
+              nur.legacyPackages.x86_64-linux.repos.mio.autodesk-fusion-360
               pkgs.qdirstat
               pkgs.pandoc
               pkgs.slack
@@ -112,6 +120,7 @@
         modules = [
           ./hosts/desktop/configuration.nix
           stylix.nixosModules.stylix
+          nur.modules.nixos.default
           home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = [ hermes-agent.overlays.default ];
@@ -133,6 +142,7 @@
               helium.packages.${system}.default
               slick.packages.${system}.default
               llm-agents.packages.${system}.ori
+              nur.legacyPackages.x86_64-linux.repos.mio.autodesk-fusion-360
               pkgs.qdirstat
               pkgs.pandoc
               pkgs.slack

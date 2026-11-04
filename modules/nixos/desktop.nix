@@ -84,6 +84,7 @@
     zed-editor
     geany
     nautilus
+    rpi-imager # Raspberry Pi OS SD card flashing (elevates via pkexec)
     # Niri essentials
     xwayland-satellite # X11 bridge for niri (Steam and other X11 apps)
     swaylock
