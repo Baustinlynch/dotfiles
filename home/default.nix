@@ -1,6 +1,23 @@
 { config, pkgs, ... }:
 
 let
+  # Temporary workaround for nixpkgs' OpenCode 2.2.5 node_modules hash mismatch.
+  # Keep the CLI and desktop app on the same corrected dependency bundle, and
+  # stop applying the workaround once upstream changes the version or hash.
+  opencode-fixed = pkgs.opencode.overrideAttrs (old: {
+    node_modules = old.node_modules.overrideAttrs (deps: {
+      outputHash =
+        if
+          old.version == "2.2.5"
+          && deps.outputHash == "sha256-xfOVcw1+waLVNhFDwzOtzxrUSQEogvn88YomydOlhwc="
+        then
+          "sha256-prx9dX7kUvs/E3zopkaPk5LXh3xJAy5sZeum/W8L7cA="
+        else
+          deps.outputHash;
+    });
+  });
+  opencode-desktop-fixed = pkgs.opencode-desktop.override { opencode = opencode-fixed; };
+
   # qcalc: terminal calculator (Rust crate, not packaged in nixpkgs).
   qcalc = pkgs.rustPlatform.buildRustPackage rec {
     pname = "qcalc";
@@ -103,8 +120,8 @@ in
     spotify
     awww # waypaper backend
     hyfetch # shell greeting (fish alias 'c')
-    opencode-desktop
-    opencode # CLI (ai coding agent for the terminal)
+    opencode-desktop-fixed
+    opencode-fixed # CLI (ai coding agent for the terminal)
     teams-for-linux
     rpm
     # Dev tools (moved from dev.nix)
