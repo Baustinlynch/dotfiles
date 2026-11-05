@@ -103,5 +103,6 @@
     # swaybg removed - waypaper uses awww backend
     # Polkit agent
     polkit_gnome
+    ampcode
   ];
 }

@@ -137,6 +137,7 @@
               nur.legacyPackages.x86_64-linux.repos.mio.autodesk-fusion-360
               pkgs.qdirstat
               pkgs.pandoc
+              pkgs.rpi-imager
               pkgs.slack
             ];
           })
@@ -173,6 +174,7 @@
               nur.legacyPackages.x86_64-linux.repos.mio.autodesk-fusion-360
               pkgs.qdirstat
               pkgs.pandoc
+              pkgs.rpi-imager
               pkgs.slack
             ];
           })
