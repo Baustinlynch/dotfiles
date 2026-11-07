@@ -1,5 +1,5 @@
-{ config, pkgs, ... }:
-
+{
+  config, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -36,6 +36,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   # Cap the number of boot menu entries kept in the ESP (default is unlimited
   # on some setups; 10 is plenty for rollbacks and keeps /boot small).
+  # NOTE: if opening the lid no longer wakes the machine from S3 suspend,
+  # re-enable only PNP0C0D here.
   boot.loader.systemd-boot.configurationLimit = 10;
 
   hardware.cpu.amd.updateMicrocode = true;
@@ -43,11 +45,11 @@
 
   users.users.brenden = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "disk" ];
     shell = pkgs.fish;
   };
 
-  # fish is the login shell; keep bash enabled as a fallback for scripts.
+  # fish is the login shell; keep bash and zsh enabled as fallbacks for scripts.
   programs.fish.enable = true;
   programs.bash.enable = true;
   # zsh stays installed so existing workflows/scripts still work.
@@ -74,6 +76,18 @@
 
   # UK keyboard on TTY as well as X11/Wayland
   console.keyMap = "uk";
+
+  # Preserve X11/Wayland environment variables through sudo so GUI apps (e.g. rpi-imager)
+  # can connect to the display when run via sudo/pkexec
+  security.sudo.extraConfig = ''
+    Defaults env_keep += "DISPLAY XAUTHORITY WAYLAND_DISPLAY XDG_SESSION_TYPE"
+  '';
+
+  # Allow root to connect to the X display for GUI apps run via sudo
+  # (needed when running rpi-imager or other X11 apps through sudo)
+  environment.systemPackages = with pkgs; [
+    xhost
+  ];
 
   # Stylix theming (base16 scheme; no wallpaper image).
   stylix = {
@@ -145,4 +159,7 @@
 
   # Resume from hibernate (swapfile on root). Offset updated by filefrag -v /swapfile.
   boot.kernelParams = [ "resume=UUID=9eda2a55-0b2a-4f3a-8147-df2a7eb641f4" "resume_offset=74409984" ];
+
+  # Enable udisks2 for automatic USB drive mounting
+  services.udisks2.enable = true;
 }

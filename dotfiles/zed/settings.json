@@ -12,6 +12,7 @@
     }
   },
   "agent": {
+    "default_profile": "ask",
     "tool_permissions": {
       "tools": {
         "terminal": {

@@ -85,6 +85,7 @@
     geany
     nautilus
     rpi-imager # Raspberry Pi OS SD card flashing (elevates via pkexec)
+    libxcb-cursor # Fixes Qt xcb-cursor0 missing error
     # Niri essentials
     xwayland-satellite # X11 bridge for niri (Steam and other X11 apps)
     swaylock

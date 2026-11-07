@@ -23,7 +23,7 @@
 
   users.users.brenden = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" "disk" ];
     shell = pkgs.fish;
   };
 
